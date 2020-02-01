@@ -6,26 +6,22 @@ using UnityEngine;
 
 namespace HammerDown.Tools
 {
-    public class Plank : MonoBehaviour, IGrabable
+    public class Plank : GrabableObject
     {
-        public float timeToFallDown;
-        private bool _isOnWall = false;
         private int nails = 0;
+        
 
-        public void OnGrab(Hand hand)
+        public override void OnRelease(Hand hand)
         {
-            gameObject.transform.parent = hand.transform;
-        }
-
-        public void OnRelease(Hand hand)
-        {
+            if (nails >= 2)
+            {
+                _gravity.Enabled = false;
+                Debug.Log("Deactivated Gravity of " + gameObject.name + ", because plank has more than 2 nails");
+            }
             gameObject.transform.parent = null;
-            // TODO Check if wall is free
-            _isOnWall = true;
-            
+
         }
-        
-        
+
     }
     
 }
