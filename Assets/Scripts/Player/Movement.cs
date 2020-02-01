@@ -55,8 +55,25 @@ namespace HammerDown.Player
                 move += transform.up;
                 CheckDistanceToWall();
             }
+
+            Vector3 movement = move.normalized * Time.fixedDeltaTime * speed;
+
+            if (!CheckInBounds(movement))
+                return;
    
-            rigid.MovePosition(rigid.position + move.normalized * Time.fixedDeltaTime * speed);
+            rigid.MovePosition(rigid.position + movement);
+        }
+
+
+        bool CheckInBounds(Vector3 moveDir)
+        {
+            if (Physics.Raycast(rigid.position + moveDir, -transform.up,
+                out RaycastHit hit, 1000.0f, movementMask))
+            {
+                return true;
+            }
+
+            return false;
         }
         
         void SnapToObject()
