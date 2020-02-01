@@ -7,6 +7,7 @@ using HammerDown.Player;
 namespace HammerDown.GameObjects
 {
     [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(Animation))]
     public class Gravity : MonoBehaviour, ITouchable
     {
         public float TimeUntilWarning = 4f;
@@ -41,12 +42,14 @@ namespace HammerDown.GameObjects
         private Coroutine warningTimer;
         private Coroutine dropTimer;
         private Rigidbody rigidBody;
+        private Animation warningAnimation;
 
 
         // Start is called before the first frame update
         void Start()
         {
             rigidBody = GetComponent<Rigidbody>();
+            warningAnimation = GetComponent<Animation>();
             OnTouchExit(null);
         }
 
@@ -107,9 +110,14 @@ namespace HammerDown.GameObjects
             rigidBody.useGravity = true;
         }
 
+        private void Shake()
+        {
+            warningAnimation.Play();
+        }
+
         private void Warning()
         {
-            Debug.Log("Warning " + gameObject.name);
+            Shake();
             if (dropTimer != null)
             {
                 StopCoroutine(dropTimer);
