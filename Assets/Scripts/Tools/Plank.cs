@@ -8,7 +8,9 @@ namespace HammerDown.Tools
 {
     public class Plank : GrabableObject
     {
+        [SerializeField]
         private int nails = 0;
+        private List<Nail> allNails;
         
         public override void OnRelease(Hand hand)
         {
@@ -21,9 +23,17 @@ namespace HammerDown.Tools
 
         }
 
-        public void AddNail()
+        public void AddNail(Nail nail)
         {
-            nails++;
+            if (!allNails.Contains(nail))
+            {
+                Debug.Log("Added nail to plank");
+                nails++;
+            }
+            else
+            {
+                Debug.Log("Nail Already part of plank");
+            }
         }
 
     }

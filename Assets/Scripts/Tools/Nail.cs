@@ -11,6 +11,8 @@ namespace HammerDown.Tools
     public class Nail : GrabableObject, IHitable
     {
         public int timesToHit = 2;
+        public LayerMask movementMask;
+        public LayerMask hitMask;
         
         private int _hitCounter = 0;
         private bool _stateHolding = false;
@@ -30,7 +32,7 @@ namespace HammerDown.Tools
             _nailState = NailStates.Loose;
             
         }
-        
+
 
         public override void OnGrab(Hand hand)
         {
@@ -66,10 +68,15 @@ namespace HammerDown.Tools
             if (_nailState == NailStates.Holding && _stateHolding)
             {
                 // TODO Check if on board
+                //Game.instance.board
                 
                 // TODO check underlining plank
-                
-                
+                if (Physics.Raycast(rigid.position, - transform.up, 
+                    out RaycastHit hit, 1000.0f, movementMask))
+                {
+                    hit.transform.gameObject.GetComponent<Plank>().AddNail(this);
+                    
+                }
                 
                 Debug.Log("First Hit on Nail");
                 _hitCounter++;
