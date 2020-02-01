@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using HammerDown.Interfaces;
-using HammerDown.Tools;
+using HammerDown.Player;
 using UnityEngine;
 
 namespace HammerDown.Tools

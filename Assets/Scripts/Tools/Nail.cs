@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using HammerDown.Interfaces;
+using HammerDown.Player;
 using UnityEngine;
 
 namespace HammerDown.Tools
@@ -88,11 +89,6 @@ namespace HammerDown.Tools
             {
                 Debug.Log("Can't hit a destroyed nail");
             }
-            
-            //if(_nailState == N)
-
-
-
         }
     }
 }
