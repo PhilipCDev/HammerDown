@@ -18,20 +18,24 @@ namespace HammerDown.Animals
         }
 
         public Targets currentTarget;
-        private Transform _targetPosition;
+        public float speed;
+        public bool active;
+        protected Transform _targetPosition;
+        protected Animator _animator;
 
         private void Start()
         {
             SetUp();
         }
 
-        private Transform GetTargetPosition(Targets target)
+        protected Transform GetTargetPosition(Targets target)
         {
             switch (target)
             {
                 case Targets.Hammer:
                     return Game.instance.hammer.transform;
                 case Targets.Hand:
+                    Debug.Log(Game.instance.hand);
                     return Game.instance.hand.transform;
                 case Targets.Hole:
                     List<Hole> holes = Game.instance.board.holes;
@@ -53,5 +57,10 @@ namespace HammerDown.Animals
             
         }
 
+        private void Update()
+        {
+            if(!active) return;
+            GoToTarget();
+        }
     }
 }
