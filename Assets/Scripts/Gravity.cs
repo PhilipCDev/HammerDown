@@ -8,11 +8,14 @@ namespace HammerDown.GameObjects
 {
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(Animation))]
-    public class Gravity : MonoBehaviour, ITouchable
+    public class Gravity : MonoBehaviour
     {
         public float TimeUntilWarning = 4f;
         public float TimeFromWarningToDrop = 2f;
+        public bool changeKinematicState;
         private bool _enabled = true;
+        private bool cannotFall;
+
         [SerializeField]
         public bool Enabled
         {
@@ -53,12 +56,7 @@ namespace HammerDown.GameObjects
             //OnTouchExit(null);
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
+ 
         private IEnumerator Countdown(float time, TimerDegelate func)
         {
             float normalizedTime = 0;
@@ -70,13 +68,17 @@ namespace HammerDown.GameObjects
             func();
         }
 
-        public void OnTouchEnter(Hand hand)
+        public void Stabilized()
         {
             if (_enabled == false || rigidBody == null)
             {
                 return;
             }
+
             rigidBody.useGravity = false;
+            if(changeKinematicState)
+                rigidBody.isKinematic = true;
+
             if (warningTimer != null)
             {
                 StopCoroutine(warningTimer);
@@ -87,14 +89,9 @@ namespace HammerDown.GameObjects
             }
         }
 
-        public void OnTouchStay(Hand hand)
+        public void DeStabilized()
         {
-
-        }
-
-        public void OnTouchExit(Hand hand)
-        {
-            if (_enabled == false || rigidBody == null)
+            if (_enabled == false || rigidBody == null || cannotFall)
             {
                 return;
             }
@@ -105,9 +102,16 @@ namespace HammerDown.GameObjects
             warningTimer = StartCoroutine(Countdown(TimeUntilWarning,Warning));
         }
 
+        public void CanNoLongerFall()
+        {
+            cannotFall = true;
+        }
+
         private void Drop()
         {
             rigidBody.useGravity = true;
+            if(changeKinematicState)
+                rigidBody.isKinematic = false;
         }
 
         private void Shake()

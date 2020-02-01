@@ -8,6 +8,7 @@ using UnityEngine;
 
 namespace HammerDown.Tools
 {
+    [SelectionBase]
     public class Nail : GrabableObject, IHitable
     {
         public int timesToHit = 2;
@@ -52,8 +53,7 @@ namespace HammerDown.Tools
             gameObject.transform.localEulerAngles = Vector3.zero;
             gameObject.transform.localPosition = handOffset;
             _nailState = NailStates.Holding;
-            rigid.useGravity = false;
-            rigid.isKinematic = true;
+            _gravity.Stabilized();
         }
 
         public override void OnRelease(Hand hand)
@@ -63,16 +63,11 @@ namespace HammerDown.Tools
             if (_nailState == NailStates.Holding)
             {
                 gameObject.transform.parent = null;
-                //TODO Gravity Script
-                //_gravity.Enabled = true;
-                rigid.useGravity = true;
-                rigid.isKinematic = false;
+                _gravity.DeStabilized();
                 _nailState = NailStates.Loose;
                 return;
             }
-            rigid.useGravity = false;
-            rigid.isKinematic = true;
-            //_gravity.Enabled = false;
+            _gravity.Stabilized();
         }
 
         public void OnHit(Hammer hammer)

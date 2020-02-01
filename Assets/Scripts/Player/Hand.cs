@@ -2,6 +2,7 @@
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using HammerDown.Interfaces;
+using HammerDown.Animals;
 
 namespace HammerDown.Player
 {
@@ -39,6 +40,11 @@ namespace HammerDown.Player
 
             if (context.canceled)
                 GrabEnd();
+        }
+
+        public void Feared(Animal fearer)
+        {
+
         }
 
         private void OnTriggerEnter(Collider other)
