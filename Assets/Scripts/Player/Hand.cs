@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using HammerDown.Interfaces;
 
-namespace HammerDown.Tools
+namespace HammerDown.Player
 {
     [RequireComponent(typeof(Movement))]
     public class Hand : MonoBehaviour

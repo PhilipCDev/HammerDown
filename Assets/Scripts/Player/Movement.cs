@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace HammerDown.Hand
+namespace HammerDown.Player
 {
     [RequireComponent(typeof(Rigidbody))]
     public class Movement : MonoBehaviour
