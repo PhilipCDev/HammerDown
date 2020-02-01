@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using HammerDown.Interfaces;
 
 namespace HammerDown.Player
 {
@@ -25,7 +26,14 @@ namespace HammerDown.Player
 
         private void OnTriggerEnter(Collider other)
         {
-            
+            IHitable[] hits = other.GetComponentsInChildren<IHitable>();
+            if (hits.Length == 0)
+                return;
+
+            foreach  (IHitable hit in hits)
+            {
+                hit.OnHit(this);
+            }
         }
 
         void HammerDown()
