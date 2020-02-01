@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace HammerDown.Tools
+namespace HammerDown.Hand
 {
-    public class Hammer : MonoBehaviour
+    public class Movement : MonoBehaviour
     {
         // Start is called before the first frame update
         void Start()

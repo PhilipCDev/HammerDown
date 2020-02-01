@@ -1,11 +1,18 @@
-﻿using HammerDown.Tools;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-namespace HammerDown.Interfaces
+public class ITouchable : MonoBehaviour
 {
-    public interface ITouchable
+    // Start is called before the first frame update
+    void Start()
     {
-        void OnTouchEnter(Hand hand);
-        void OnTouchStay(Hand hand);
-        void OnTouchExit(Hand hand);
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }
