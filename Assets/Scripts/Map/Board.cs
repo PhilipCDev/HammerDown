@@ -1,34 +1,37 @@
-﻿using System.Collections.Generic;
+﻿using HammerDown.Map.Components;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace HammerDown.Map
 {
     public class Board : MonoBehaviour
     {
-        private void Start()
-        {
-            //TODO register when level is changed
-            Game.instance.RegisterNewBoard(this);
-        }
 
+        //List of all holes, just use and not change entries! Currently holes are not implemented
+        public List<Hole> holes;
+
+        //Bool function. Give a point and returns if it is on a board. Check for Nail (Nail can only be nailed in if OnBoard is true)
         public bool IsOnBoard(Vector2 position)
         {
             return true;
         }
 
-        public bool IsCovered(RectanglePos position)
-        {
-            return true;
-        }
-
+        //Call Whenever a nail is nailed completly in. Returns true only if the Plank is fully fixed. Needs position of the board and position of all full nailed in and not broken nails.
         public bool IsPlankFixed(RectanglePos position, List<Vector2> nailPositions)
         {
             return false;
         }
 
+        //returns size of the board
         public Vector2 GetSize()
         {
             return Vector2.one;
+        }
+
+        //used for evaluating points, you do not need this
+        public float CalcHoleCoverage()
+        {
+            return 0;
         }
     }
 
