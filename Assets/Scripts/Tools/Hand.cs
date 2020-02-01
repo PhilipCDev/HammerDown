@@ -1,19 +1,36 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace HammerDown.Tools
 {
+    [RequireComponent(typeof(Movement))]
     public class Hand : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
+        Movement movement;
+
+        private void Start()
         {
-        
+            movement = GetComponent<Movement>();
         }
 
-        // Update is called once per frame
-        void Update()
+        public void Trigger(InputAction.CallbackContext context)
         {
-        
+            if (context.performed)
+                GrabBegin();
+
+            if (context.canceled)
+                GrabEnd();
+        }
+
+        void GrabBegin()
+        {
+            movement.MoveDown();
+        }
+
+        void GrabEnd()
+        {
+            movement.MoveUp();
         }
     }
 }
+
