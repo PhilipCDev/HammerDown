@@ -22,19 +22,9 @@ namespace HammerDown.Tools
             gameObject.transform.parent = null;
             // TODO Check if wall is free
             _isOnWall = true;
-            StartCoroutine(nameof(FallDown));
+            
         }
-
-        private IEnumerator FallDown()
-        {
-            yield return new WaitForSeconds(timeToFallDown);
-            if (nails <= 3)
-            {
-                gameObject.GetComponent<Rigidbody>().isKinematic = true;
-            }
-
-
-        }
+        
         
     }
     

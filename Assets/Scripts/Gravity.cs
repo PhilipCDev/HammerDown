@@ -11,6 +11,31 @@ namespace HammerDown.GameObjects
     {
         public float TimeUntilWarning = 4f;
         public float TimeFromWarningToDrop = 2f;
+        private bool _enabled = true;
+        [SerializeField]
+        public bool Enabled
+        {
+            get
+            {
+                return _enabled;
+            }
+            set
+            {
+                _enabled = value;
+                if (_enabled == false)
+                {
+                    if (warningTimer != null)
+                    {
+                        StopCoroutine(warningTimer);
+                    }
+                    if (dropTimer != null)
+                    {
+                        StopCoroutine(dropTimer);
+                    }
+                }
+            }
+        }
+
 
         private delegate void TimerDegelate();
         private Coroutine warningTimer;
@@ -44,6 +69,10 @@ namespace HammerDown.GameObjects
 
         public void OnTouchEnter(Hand hand)
         {
+            if (_enabled == false)
+            {
+                return;
+            }
             rigidBody.useGravity = false;
             if (warningTimer != null)
             {
@@ -62,6 +91,10 @@ namespace HammerDown.GameObjects
 
         public void OnTouchExit(Hand hand)
         {
+            if (_enabled == false)
+            {
+                return;
+            }
             if (warningTimer != null)
             {
                 StopCoroutine(warningTimer);
