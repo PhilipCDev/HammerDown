@@ -15,6 +15,12 @@ namespace HammerDown.Player
 
         public LayerMask movementMask;
         public LayerMask hitMask;
+
+        public LayerMask wallMask;
+        public LayerMask floorMask;
+
+        public bool OnWall { private set; get; }
+
         Vector2 moveAxis;
 
         bool downMoving;
@@ -24,14 +30,16 @@ namespace HammerDown.Player
         private void Start()
         {
             rigid = GetComponent<Rigidbody>();
+            OnWall = true;
         }
 
         private void FixedUpdate()
         {
+            if (!confinedToWall)
+                SnapToObject();
             CheckForForwardObject();
             Move();
         }
-
 
         void Move()
         {
@@ -49,6 +57,28 @@ namespace HammerDown.Player
             }
    
             rigid.MovePosition(rigid.position + move.normalized * Time.fixedDeltaTime * speed);
+        }
+        
+        void SnapToObject()
+        {
+            //Check Down to see if hitting ground
+            if (Physics.Raycast(rigid.position, transform.forward,
+                out RaycastHit hitFloor, 0.5f, floorMask))
+            {
+                //Snap to Wall
+                transform.up = hitFloor.normal;
+                OnWall = false;
+                return;
+            }
+
+            if (Physics.Raycast(rigid.position, - transform.forward,
+                out RaycastHit hitWall, 0.3f, wallMask))
+            {
+                //Snap to Wall
+                transform.up = hitWall.normal;
+                OnWall = true;
+                return;
+            }
         }
 
         public void UpdateMovement(InputAction.CallbackContext context)
@@ -80,7 +110,6 @@ namespace HammerDown.Player
             }
         }
 
-    
         void CheckForForwardObject()
         {
             if (Physics.Raycast(rigid.position, -transform.up, hitDistance, hitMask))

@@ -16,6 +16,7 @@ namespace HammerDown.Player
         private void Start()
         {
             movement = GetComponent<Movement>();
+            Game.instance.RegisterHammer(this);
         }
 
         public void Trigger(InputAction.CallbackContext context)

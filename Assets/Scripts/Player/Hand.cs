@@ -11,13 +11,19 @@ namespace HammerDown.Player
         Movement movement;
 
         List<GameObject> grabbedObjectsInRange = new List<GameObject>();
-        List<GameObject> touchedObjects = new List<GameObject>();
 
         GameObject activeGrabbedObject;
 
         private void Start()
         {
             movement = GetComponent<Movement>();
+            Game.instance.RegisterHand(this);
+        }
+
+        private void Update()
+        {
+            //Hand should not collide with hammer when not on wall
+            Physics.IgnoreLayerCollision(8, 9, !movement.OnWall);
         }
 
         public void Trigger(InputAction.CallbackContext context)
