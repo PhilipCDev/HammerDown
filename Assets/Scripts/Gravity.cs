@@ -50,7 +50,7 @@ namespace HammerDown.GameObjects
         {
             rigidBody = GetComponent<Rigidbody>();
             warningAnimation = GetComponent<Animation>();
-            OnTouchExit(null);
+            //OnTouchExit(null);
         }
 
         // Update is called once per frame
