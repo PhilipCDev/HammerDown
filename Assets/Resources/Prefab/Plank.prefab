@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8531305891121884962}
   - component: {fileID: 8531305891121884963}
   - component: {fileID: 8531305891121884960}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Plank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,6 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e161b4e196ab9804dbb4b52974bedb37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nails: 0
 --- !u!54 &8531305891121884962
 Rigidbody:
   m_ObjectHideFlags: 0
