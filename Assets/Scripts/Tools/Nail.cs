@@ -68,9 +68,13 @@ namespace HammerDown.Tools
             if (_nailState == NailStates.Holding && _stateHolding)
             {
                 // TODO Check if on board
-                //Game.instance.board
+                if (!Game.instance.board.IsOnBoard(new Vector2(transform.position.x, transform.position.y )))
+                {
+                    Debug.Log("Nail needs to be on board");
+                    _nailState = NailStates.Destroyed;
+                    return;
+                }
                 
-                // TODO check underlining plank
                 if (Physics.Raycast(rigid.position, - transform.up, 
                     out RaycastHit hit, 1000.0f, movementMask))
                 {

@@ -11,7 +11,12 @@ namespace HammerDown.Tools
         [SerializeField]
         private int nails = 0;
         private List<Nail> allNails;
-        
+
+        protected override void SetUp()
+        {
+            allNails = new List<Nail>();
+        }
+
         public override void OnRelease(Hand hand)
         {
             if (nails >= 2)
