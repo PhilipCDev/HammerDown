@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace HammerDown.Hand
+namespace HammerDown.Tools
 {
     public class Hand : MonoBehaviour
     {

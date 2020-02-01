@@ -1,38 +1,14 @@
 {
-    "name": "GameControls",
+    "name": "HandControls",
     "maps": [
         {
             "name": "Game",
             "id": "cc93d243-9159-43fc-8c5f-829f83da9c73",
             "actions": [
                 {
-                    "name": "HandMovement",
+                    "name": "Trigger",
                     "type": "Button",
-                    "id": "084e1627-7301-44eb-8896-005dda6859a9",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "HammerMovement",
-                    "type": "Button",
-                    "id": "ade68531-730c-4b14-b4c7-efb57c918e6a",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "HandTrigger",
-                    "type": "Button",
-                    "id": "b0b4589e-cbda-4b61-ade9-ff733c739db1",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "HammerTrigger",
-                    "type": "Button",
-                    "id": "3ee5ca0a-0fd4-42a4-8c5c-ce6139a0514e",
+                    "id": "3d8b6c3c-c863-4d21-96e9-46a2533338dd",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
@@ -40,167 +16,24 @@
             ],
             "bindings": [
                 {
-                    "name": "2D Vector",
-                    "id": "e5f66cca-1a5b-4774-b034-77f4a0d62eec",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HandMovement",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "0ea2564c-b27a-42bf-8ef3-475ea85028be",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HandMovement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "65bed9f8-cb7d-4bcb-8e4b-43a9bf95bdef",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HandMovement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "66c26ba8-611d-4516-b77a-188010a63767",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HandMovement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "d5ae3558-81eb-46a9-b79b-5789a74cbf54",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HandMovement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "2D Vector",
-                    "id": "496d4fda-4d51-491f-91a2-28bfae58fd2e",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HammerMovement",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "9d283776-a5bc-4d64-8d9e-720eaf0aba30",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HammerMovement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "445a7350-b8c5-4dca-8e22-c86ba77c5151",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HammerMovement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "122e6755-de7b-4706-931c-257b00f36d2f",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HammerMovement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "dc5be9a2-4ec8-48ab-bb75-242cda1fe11a",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HammerMovement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
-                    "id": "f10c20ee-be14-46ab-80af-2e759d34fdef",
-                    "path": "<Keyboard>/e",
+                    "id": "f0abaafb-270b-4872-af81-e9e7de62921c",
+                    "path": "<XInputController>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "HandTrigger",
+                    "action": "Trigger",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "13769a8a-98d7-4018-a3b0-038ddac0c071",
-                    "path": "<Keyboard>/q",
+                    "id": "27d1e325-d62d-4ce4-8039-a39e04502a08",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "HandTrigger",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "55191906-d575-4991-b114-56d29688affc",
-                    "path": "<Keyboard>/shift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HandTrigger",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "05ccff9f-61ce-42cf-9664-7c3f1778a8bd",
-                    "path": "<Keyboard>/rightCtrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HammerTrigger",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f77c85dd-d87e-46e4-9aba-48b1c79c8b2e",
-                    "path": "<Keyboard>/rightShift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HammerTrigger",
+                    "action": "Trigger",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
