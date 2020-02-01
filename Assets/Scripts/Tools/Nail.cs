@@ -67,6 +67,10 @@ namespace HammerDown.Tools
             {
                 // TODO Check if on board
                 
+                // TODO check underlining plank
+                
+                
+                
                 Debug.Log("First Hit on Nail");
                 _hitCounter++;
                 _nailState = NailStates.ABitInWall;

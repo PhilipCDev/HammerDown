@@ -21,6 +21,11 @@ namespace HammerDown.Tools
 
         }
 
+        public void AddNail()
+        {
+            nails++;
+        }
+
     }
     
 }
