@@ -9,6 +9,7 @@ namespace HammerDown.Player
     public class Hand : MonoBehaviour
     {
         Movement movement;
+        Animator animator;
 
         List<GameObject> grabbedObjectsInRange = new List<GameObject>();
 
@@ -17,6 +18,7 @@ namespace HammerDown.Player
         private void Start()
         {
             movement = GetComponent<Movement>();
+            animator = GetComponentInChildren<Animator>();
             Game.instance.RegisterHand(this);
         }
 
@@ -99,6 +101,18 @@ namespace HammerDown.Player
                 {
                     g.OnGrab(this);
                 }
+
+                //Grabbed Nail
+                if(activeGrabbedObject.layer == 10)
+                {
+                    animator.CrossFade("StartNail", 0.2f);
+                }
+                else
+                {
+                    animator.CrossFade("StartPlate", 0.2f);
+                }
+
+                animator.SetBool("released", false);
             }
         }
 
@@ -111,6 +125,7 @@ namespace HammerDown.Player
                 {
                     g.OnRelease(this);
                 }
+                animator.SetBool("released", true);
             }
         }
     }
