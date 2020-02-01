@@ -12,6 +12,7 @@ namespace HammerDown.Tools
     {
         public int timesToHit = 2;
         public Vector3 handOffset;
+        public Vector3 nailStep;
         public LayerMask movementMask;
         public LayerMask hitMask;
         
@@ -51,6 +52,8 @@ namespace HammerDown.Tools
             gameObject.transform.localEulerAngles = Vector3.zero;
             gameObject.transform.localPosition = handOffset;
             _nailState = NailStates.Holding;
+            rigid.useGravity = false;
+            rigid.isKinematic = true;
         }
 
         public override void OnRelease(Hand hand)
@@ -60,11 +63,16 @@ namespace HammerDown.Tools
             if (_nailState == NailStates.Holding)
             {
                 gameObject.transform.parent = null;
-                _gravity.Enabled = true;
+                //TODO Gravity Script
+                //_gravity.Enabled = true;
+                rigid.useGravity = true;
+                rigid.isKinematic = false;
                 _nailState = NailStates.Loose;
                 return;
             }
-            _gravity.Enabled = false;
+            rigid.useGravity = false;
+            rigid.isKinematic = true;
+            //_gravity.Enabled = false;
         }
 
         public void OnHit(Hammer hammer)
@@ -89,6 +97,8 @@ namespace HammerDown.Tools
                 Debug.Log("First Hit on Nail");
                 _hitCounter++;
                 _nailState = NailStates.ABitInWall;
+                //Push Nail in Wall
+                gameObject.transform.localPosition += nailStep;
                 return;
             }
             
@@ -99,6 +109,8 @@ namespace HammerDown.Tools
                 {
                     Debug.Log("Nail fixed in wall");
                     _nailState = NailStates.Fixed;
+                    //Push Nail in Wall
+                    gameObject.transform.localPosition += nailStep;
                     Game.instance.board.boardStatus.RemoveNail(this);
                 }
                 else

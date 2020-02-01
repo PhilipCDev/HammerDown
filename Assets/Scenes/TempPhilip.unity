@@ -459,6 +459,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nail (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 3876956248299309034, guid: da688ec0f379850478f69dae8790a972,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da688ec0f379850478f69dae8790a972, type: 3}
 --- !u!114 &597520023 stripped
@@ -1622,6 +1627,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftHand
       objectReference: {fileID: 0}
+    - target: {fileID: 5906029810272786956, guid: 03ab5e2019375f74fae72abff68b269e,
+        type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5906029810272786958, guid: 03ab5e2019375f74fae72abff68b269e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1757,6 +1767,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Hammer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940808051139133689, guid: 848d083c4bddda643ab56692b6d7555e,
+        type: 3}
+      propertyPath: speed
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 848d083c4bddda643ab56692b6d7555e, type: 3}

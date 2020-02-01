@@ -72,7 +72,7 @@ namespace HammerDown.GameObjects
 
         public void OnTouchEnter(Hand hand)
         {
-            if (_enabled == false)
+            if (_enabled == false || rigidBody == null)
             {
                 return;
             }
@@ -94,7 +94,7 @@ namespace HammerDown.GameObjects
 
         public void OnTouchExit(Hand hand)
         {
-            if (_enabled == false)
+            if (_enabled == false || rigidBody == null)
             {
                 return;
             }

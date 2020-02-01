@@ -13,10 +13,15 @@ namespace HammerDown.Player
 
         Coroutine hammerUpCoroutine;
 
+
+        private void Awake()
+        {
+            Game.instance.RegisterHammer(this);
+        }
+
         private void Start()
         {
-            movement = GetComponent<Movement>();
-            Game.instance.RegisterHammer(this);
+            movement = GetComponent<Movement>();       
         }
 
         public void Trigger(InputAction.CallbackContext context)

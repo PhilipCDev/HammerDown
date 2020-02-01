@@ -9,9 +9,12 @@ namespace HammerDown.Player
     public class Movement : MonoBehaviour
     {
         public float speed = 2.0f;
+        public float moveRampSpeed = 3;
         public bool confinedToWall;
         public float distanceToWall = 1.2f;
         public float hitDistance = 0.2f;
+
+        float moveRamp;
 
         public LayerMask movementMask;
         public LayerMask hitMask;
@@ -43,24 +46,33 @@ namespace HammerDown.Player
 
         void Move()
         {
-            Vector3 move = transform.right * moveAxis.x + transform.forward * moveAxis.y;
-                
-            if(downMoving)
+            if (moveAxis.magnitude < 0.1f)
             {
-                move += -transform.up;
+                moveRamp = 0;
+            }
+
+            moveRamp = Mathf.Lerp(moveRamp, 1, Time.deltaTime * moveRampSpeed);
+
+            Vector3 move = transform.right * moveAxis.x + transform.forward * moveAxis.y;
+            move.Normalize();
+            move *= moveRamp;
+
+            if (downMoving)
+            {
+                move = move * 0.4f - transform.up;
             }
             else
-            if(upMoving)
+            if (upMoving)
             {
-                move += transform.up;
+                move = move * 0.4f + transform.up;
                 CheckDistanceToWall();
             }
 
-            Vector3 movement = move.normalized * Time.fixedDeltaTime * speed;
+            Vector3 movement = move * Time.fixedDeltaTime * speed;
 
             if (!CheckInBounds(movement))
                 return;
-   
+
             rigid.MovePosition(rigid.position + movement);
         }
 
@@ -75,7 +87,7 @@ namespace HammerDown.Player
 
             return false;
         }
-        
+
         void SnapToObject()
         {
             //Check Down to see if hitting ground
@@ -88,13 +100,31 @@ namespace HammerDown.Player
                 return;
             }
 
-            if (Physics.Raycast(rigid.position, - transform.forward,
+            if (Physics.Raycast(rigid.position, -transform.forward,
                 out RaycastHit hitWall, 0.3f, wallMask))
             {
                 //Snap to Wall
                 transform.up = hitWall.normal;
                 OnWall = true;
                 return;
+            }
+
+            upMoving = false;
+            downMoving = false;
+            //Fixed distance to object
+            if (Physics.Raycast(rigid.position, -transform.up,
+               out RaycastHit hit, 1000.0f, movementMask))
+            {
+                //Stop moving up when enough distance from wall
+                if (hit.distance < distanceToWall * 0.9f)
+                {
+                    upMoving = true;
+                }
+                else if (hit.distance > distanceToWall * 1.1f)
+                {
+                    downMoving = true;
+                }
+
             }
         }
 
@@ -118,7 +148,7 @@ namespace HammerDown.Player
 
         void CheckDistanceToWall()
         {
-            if (Physics.Raycast(rigid.position, - transform.up, 
+            if (Physics.Raycast(rigid.position, -transform.up,
                 out RaycastHit hit, 1000.0f, movementMask))
             {
                 //Stop moving up when enough distance from wall

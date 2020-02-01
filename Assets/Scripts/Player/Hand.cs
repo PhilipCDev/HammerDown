@@ -15,11 +15,15 @@ namespace HammerDown.Player
 
         GameObject activeGrabbedObject;
 
+        private void Awake()
+        {
+            Game.instance.RegisterHand(this);
+        }
+
         private void Start()
         {
             movement = GetComponent<Movement>();
-            animator = GetComponentInChildren<Animator>();
-            Game.instance.RegisterHand(this);
+            animator = GetComponentInChildren<Animator>();         
         }
 
         private void Update()
