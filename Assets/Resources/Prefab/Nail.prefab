@@ -143,13 +143,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3876956248299309033}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a5f4ac1629a1854e9b1c98f154c2938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeUntilWarning: 4
-  TimeFromWarningToDrop: 2
+  TimeUntilWarning: 0.5
+  TimeFromWarningToDrop: 0.8
+  changeKinematicState: 1
 --- !u!65 &3876956248299309037
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -189,7 +190,8 @@ Animation:
   m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 0}
-  m_Animations: []
+  m_Animations:
+  - {fileID: 7400000, guid: b905f82005a1cae4da621ab93f29af75, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
