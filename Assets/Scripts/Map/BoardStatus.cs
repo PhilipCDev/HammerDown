@@ -31,7 +31,7 @@ namespace HammerDown.Map
         //Call after all Nails and Boards are added
         public void StartChecking()
         {
-
+            // TODO where should I call this? can you call it after removing it from a list? - Hannah
         }
 
         //call to remove plank from unused planks. Call when plank is attached by one nail (just single stroke in the wall), or when gameobject is whyever destroyed
@@ -43,11 +43,11 @@ namespace HammerDown.Map
         //call to remove nail from unused nails. Call when nail is attached completely in the wall or has been hit wrong (is broken), or when gameobject is whyever destroyed
         public void RemoveNail(Nail nail)
         {
-
+            // it could happen, that i remove it multiple times from the list 
         }
 
         //call to add plank to fixed planks. Call when Board.IsPlankFixed return true
-        public void AddFixedPlanks(Nail nail)
+        public void AddFixedPlanks(Plank plank) // Nail nail) // changed type from nail to plank?
         {
 
         }
