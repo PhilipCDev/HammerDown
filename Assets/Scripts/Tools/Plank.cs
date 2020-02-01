@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace HammerDown.Tools
 {
-    public class Board : MonoBehaviour, IGrabable
+    public class Plank : MonoBehaviour, IGrabable
     {
         public float timeToFallDown;
         private bool _isOnWall = false;
