@@ -743,6 +743,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GGJ2020_Spider Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5633241959722741416, guid: 3d80052c5cb978c4e8ba234e53ff6286,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8680145602850299067, guid: 3d80052c5cb978c4e8ba234e53ff6286,
         type: 3}
       propertyPath: m_LocalPosition.x

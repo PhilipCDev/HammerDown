@@ -28,6 +28,10 @@ namespace HammerDown.Tools
 
         public override void OnGrab(Hand hand)
         {
+            if (allNails.Count > 0)
+            {
+                return;
+            }
             gameObject.transform.parent = hand.transform;
             Vector3 angles = gameObject.transform.localEulerAngles;
             angles.x = -90.0f;
