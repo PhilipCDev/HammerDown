@@ -13,10 +13,13 @@ namespace HammerDown.Tools
     {
 
         protected Gravity _gravity;
-
+        protected Rigidbody rigid;
+        
+        
         private void Start()
         {
             _gravity = gameObject.GetComponent<Gravity>();
+            rigid = gameObject.GetComponent<Rigidbody>();
             SetUp();
         }
 
