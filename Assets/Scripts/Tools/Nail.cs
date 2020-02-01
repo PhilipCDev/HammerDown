@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using HammerDown.GameObjects;
 using HammerDown.Interfaces;
 using HammerDown.Player;
 using UnityEngine;
@@ -9,14 +10,14 @@ namespace HammerDown.Tools
 {
     public class Nail : MonoBehaviour, IGrabable, IHitable
     {
-
-        public int timesToHit = 1;
+        public int timesToHit = 2;
+        
         private int _hitCounter = 0;
         private bool _stateHolding = false;
         private bool _stateFixed = false;
-
+        private Gravity _gravity;
         private NailStates _nailState;
-        
+
         public enum NailStates
         {
             Loose, 
@@ -25,12 +26,11 @@ namespace HammerDown.Tools
             Fixed, // hitcounter == times to hit
             Destroyed // hit, but not on board 
         }
-
-        private Rigidbody _rigidbody;
+        
         private void Start()
         {
-            _rigidbody = gameObject.GetComponent<Rigidbody>();
             _nailState = NailStates.Loose;
+            _gravity = gameObject.GetComponent<Gravity>();
         }
         
         public void OnGrab(Hand hand)
@@ -52,16 +52,19 @@ namespace HammerDown.Tools
             if (_nailState == NailStates.Holding)
             {
                 gameObject.transform.parent = null;
-                _rigidbody.isKinematic = true;
+                _gravity.Enabled = true;
                 _nailState = NailStates.Loose;
+                return;
             }
-            
+
+            _gravity.Enabled = false;
         }
 
         public void OnHit(Hammer hammer)
         {
             if (_nailState == NailStates.Holding)
             {
+                // TODO Check if on board
                 
                 Debug.Log("First Hit on Nail");
                 _hitCounter++;

@@ -75,7 +75,6 @@ namespace HammerDown.Player
             if (Physics.Raycast(rigid.position, - transform.up, 
                 out RaycastHit hit, 1000.0f, movementMask))
             {
-                Debug.Log(hit.distance);
                 //Stop moving up when enough distance from wall
                 if (hit.distance >= distanceToWall)
                     upMoving = false;
