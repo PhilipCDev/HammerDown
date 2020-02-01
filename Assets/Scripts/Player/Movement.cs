@@ -16,7 +16,6 @@ namespace HammerDown.Player
         public LayerMask movementMask;
         public LayerMask hitMask;
         Vector2 moveAxis;
-        Vector3 moveOffset;
 
         bool downMoving;
         bool upMoving;
@@ -37,7 +36,7 @@ namespace HammerDown.Player
         void Move()
         {
             Vector3 move = transform.right * moveAxis.x + transform.forward * moveAxis.y;
-
+                
             if(downMoving)
             {
                 move += -transform.up;
@@ -81,6 +80,7 @@ namespace HammerDown.Player
             }
         }
 
+    
         void CheckForForwardObject()
         {
             if (Physics.Raycast(rigid.position, -transform.up, hitDistance, hitMask))
@@ -90,4 +90,5 @@ namespace HammerDown.Player
             }
         }
     }
+
 }
