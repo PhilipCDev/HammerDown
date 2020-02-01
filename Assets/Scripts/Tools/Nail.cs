@@ -16,6 +16,8 @@ namespace HammerDown.Tools
 
         private NailStates _nailState;
         
+        
+        
         public enum NailStates
         {
             Loose, 
@@ -54,14 +56,13 @@ namespace HammerDown.Tools
                 _rigidbody.isKinematic = true;
                 _nailState = NailStates.Loose;
             }
-            
         }
 
         public void OnHit(Hammer hammer)
         {
             if (_nailState == NailStates.Holding)
             {
-                
+                // TODO Check if on board
                 Debug.Log("First Hit on Nail");
                 _hitCounter++;
                 _nailState = NailStates.ABitInWall;
@@ -87,6 +88,8 @@ namespace HammerDown.Tools
             {
                 Debug.Log("Can't hit a destroyed nail");
             }
+            
+            //if(_nailState == N)
 
 
 
