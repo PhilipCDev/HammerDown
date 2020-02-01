@@ -44,6 +44,7 @@ namespace HammerDown.GameObjects
 
         public void OnTouchEnter(Hand hand)
         {
+            rigidBody.useGravity = false;
             if (warningTimer != null)
             {
                 StopCoroutine(warningTimer);
