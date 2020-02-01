@@ -42,8 +42,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.17169563, z: 1}
-  m_Center: {x: 0, y: -0.12747478, z: -3.516923e-17}
+  m_Size: {x: 1, y: 0.30923012, z: 1}
+  m_Center: {x: 0, y: -0.05870754, z: 5.38939e-17}
 --- !u!1 &5906029809731782059
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 5906029810272786958}
   - component: {fileID: 5906029810272786957}
   - component: {fileID: 5906029810272786956}
-  - component: {fileID: 5906029810272786959}
+  - component: {fileID: 7339031880321786223}
   m_Layer: 8
   m_Name: LeftHand
   m_TagString: Untagged
@@ -210,7 +210,7 @@ MonoBehaviour:
   hitMask:
     serializedVersion: 2
     m_Bits: 15360
---- !u!114 &5906029810272786959
+--- !u!114 &7339031880321786223
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -219,6 +219,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 5906029810272786955}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfe2ceb0dfd6fcc42a44b0e5fd577e3e, type: 3}
+  m_Script: {fileID: 11500000, guid: 809895c243d118f4fb4e748d55f8973a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
