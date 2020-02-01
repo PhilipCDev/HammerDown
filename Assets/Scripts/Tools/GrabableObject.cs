@@ -17,6 +17,12 @@ namespace HammerDown.Tools
         private void Start()
         {
             _gravity = gameObject.GetComponent<Gravity>();
+            SetUp();
+        }
+
+        protected virtual void SetUp()
+        {
+            
         }
 
         public virtual void OnGrab(Hand hand)

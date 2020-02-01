@@ -10,7 +10,6 @@ namespace HammerDown.Tools
     {
         private int nails = 0;
         
-
         public override void OnRelease(Hand hand)
         {
             if (nails >= 2)

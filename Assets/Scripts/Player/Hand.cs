@@ -33,7 +33,7 @@ namespace HammerDown.Player
         {
             if(other.gameObject.GetComponent<ITouchable>() != null)
             {
-                ITouchable[] touches = activeGrabbedObject.GetComponentsInChildren<ITouchable>();
+                ITouchable[] touches = other.gameObject.GetComponentsInChildren<ITouchable>();
                 foreach (ITouchable t in touches)
                 {
                     t.OnTouchEnter(this);
@@ -51,7 +51,7 @@ namespace HammerDown.Player
         {
             if(other.gameObject.GetComponent<ITouchable>() != null)
             {
-                ITouchable[] touches = activeGrabbedObject.GetComponentsInChildren<ITouchable>();
+                ITouchable[] touches = other.gameObject.GetComponentsInChildren<ITouchable>();
                 foreach (ITouchable t in touches)
                 {
                     t.OnTouchExit(this);

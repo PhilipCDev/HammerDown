@@ -14,7 +14,6 @@ namespace HammerDown.Tools
         
         private int _hitCounter = 0;
         private bool _stateHolding = false;
-        private Gravity _gravity;
         private NailStates _nailState;
 
         public enum NailStates
@@ -25,13 +24,14 @@ namespace HammerDown.Tools
             Fixed, // hitcounter == times to hit
             Destroyed // hit, but not on board 
         }
-        
-        private void Start()
+
+        protected override void SetUp()
         {
             _nailState = NailStates.Loose;
-            _gravity = gameObject.GetComponent<Gravity>();
+            
         }
         
+
         public override void OnGrab(Hand hand)
         {
             _stateHolding = true;
@@ -50,6 +50,7 @@ namespace HammerDown.Tools
         public override void OnRelease(Hand hand)
         {
             _stateHolding = false;
+            gameObject.transform.parent = null;
             if (_nailState == NailStates.Holding)
             {
                 gameObject.transform.parent = null;
