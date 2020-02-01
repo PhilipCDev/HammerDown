@@ -5,27 +5,20 @@ using HammerDown.Map;
 
 namespace HammerDown
 {
-    public class Game : MonoBehaviour
+    public class Game 
     {
-        public static Game instance;
+        public static Game instance = new Game();
 
         public Board board;
-
-        private int _score;
-        public int Score { get { return _score; } set { _score = value; } }
+        public int score;
 
         public delegate void GameEvent();
         public GameEvent GameStart { private set; get; }
 
-        private void Awake()
+        public void RegisterNewBoard(Board newBoard)
         {
-            instance = this;
+            //Old Board remove
+            board = newBoard;
         }
-
-        private void Start()
-        {
-            GameStart?.Invoke();
-        }
-
     }
 }
