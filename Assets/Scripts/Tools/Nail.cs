@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using HammerDown.GameObjects;
 using HammerDown.Interfaces;
+using HammerDown.Player;
 using UnityEngine;
 
 namespace HammerDown.Tools
 {
-    public class Nail : MonoBehaviour, IGrabable, IHitable
+    public class Nail : GrabableObject, IHitable
     {
-
-        public int timesToHit = 1;
+        public int timesToHit = 2;
+        
         private int _hitCounter = 0;
         private bool _stateHolding = false;
-        private bool _stateFixed = false;
-
         private NailStates _nailState;
-        
+
         public enum NailStates
         {
             Loose, 
@@ -25,15 +25,16 @@ namespace HammerDown.Tools
             Destroyed // hit, but not on board 
         }
 
-        private Rigidbody _rigidbody;
-        private void Start()
+        protected override void SetUp()
         {
-            _rigidbody = gameObject.GetComponent<Rigidbody>();
             _nailState = NailStates.Loose;
+            
         }
         
-        public void OnGrab(Hand hand)
+
+        public override void OnGrab(Hand hand)
         {
+            _stateHolding = true;
             if (_nailState != NailStates.Loose)
             {
                 Debug.Log("Nail can't be moved");
@@ -46,21 +47,29 @@ namespace HammerDown.Tools
             _nailState = NailStates.Holding;
         }
 
-        public void OnRelease(Hand hand)
+        public override void OnRelease(Hand hand)
         {
+            _stateHolding = false;
+            gameObject.transform.parent = null;
             if (_nailState == NailStates.Holding)
             {
                 gameObject.transform.parent = null;
-                _rigidbody.isKinematic = true;
+                _gravity.Enabled = true;
                 _nailState = NailStates.Loose;
+                return;
             }
-            
+            _gravity.Enabled = false;
         }
 
         public void OnHit(Hammer hammer)
         {
-            if (_nailState == NailStates.Holding)
+            if (_nailState == NailStates.Holding && _stateHolding)
             {
+                // TODO Check if on board
+                
+                // TODO check underlining plank
+                
+                
                 
                 Debug.Log("First Hit on Nail");
                 _hitCounter++;
@@ -68,7 +77,7 @@ namespace HammerDown.Tools
                 return;
             }
             
-            if (_nailState == NailStates.ABitInWall)
+            if (_nailState == NailStates.ABitInWall && _stateHolding)
             {
                 _hitCounter++;
                 if (_hitCounter >= timesToHit)
@@ -88,8 +97,10 @@ namespace HammerDown.Tools
                 Debug.Log("Can't hit a destroyed nail");
             }
 
-
-
+            if (_nailState == NailStates.Fixed)
+            {
+                Debug.Log("Already in wall!");
+            }
         }
     }
 }

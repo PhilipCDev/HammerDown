@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using HammerDown.Interfaces;
 
-namespace HammerDown.Tools
+namespace HammerDown.Player
 {
     [RequireComponent(typeof(Movement))]
     public class Hammer : MonoBehaviour
@@ -25,7 +26,14 @@ namespace HammerDown.Tools
 
         private void OnTriggerEnter(Collider other)
         {
-            
+            IHitable[] hits = other.GetComponentsInChildren<IHitable>();
+            if (hits.Length == 0)
+                return;
+
+            foreach  (IHitable hit in hits)
+            {
+                hit.OnHit(this);
+            }
         }
 
         void HammerDown()

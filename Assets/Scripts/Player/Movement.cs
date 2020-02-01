@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace HammerDown.Hand
+namespace HammerDown.Player
 {
     [RequireComponent(typeof(Rigidbody))]
     public class Movement : MonoBehaviour
@@ -16,7 +16,6 @@ namespace HammerDown.Hand
         public LayerMask movementMask;
         public LayerMask hitMask;
         Vector2 moveAxis;
-        Vector3 moveOffset;
 
         bool downMoving;
         bool upMoving;
@@ -37,7 +36,7 @@ namespace HammerDown.Hand
         void Move()
         {
             Vector3 move = transform.right * moveAxis.x + transform.forward * moveAxis.y;
-
+                
             if(downMoving)
             {
                 move += -transform.up;
@@ -75,13 +74,13 @@ namespace HammerDown.Hand
             if (Physics.Raycast(rigid.position, - transform.up, 
                 out RaycastHit hit, 1000.0f, movementMask))
             {
-                Debug.Log(hit.distance);
                 //Stop moving up when enough distance from wall
                 if (hit.distance >= distanceToWall)
                     upMoving = false;
             }
         }
 
+    
         void CheckForForwardObject()
         {
             if (Physics.Raycast(rigid.position, -transform.up, hitDistance, hitMask))
@@ -91,4 +90,5 @@ namespace HammerDown.Hand
             }
         }
     }
+
 }
