@@ -1,21 +1,44 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace HammerDown.Hand
 {
+    [RequireComponent(typeof(Movement))]
     public class Hammer : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
-        {
+        Movement movement;
 
+        Coroutine hammerUpCoroutine;
+
+        private void Start()
+        {
+            movement = GetComponent<Movement>();
         }
 
-        // Update is called once per frame
-        void Update()
+        public void Trigger(InputAction.CallbackContext context)
         {
+            if (context.performed)
+                HammerDown();
+        }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            
+        }
+
+        void HammerDown()
+        {
+            movement.MoveDown();
+            if (hammerUpCoroutine != null) StopCoroutine(MoveHammerUp());
+            hammerUpCoroutine = StartCoroutine(MoveHammerUp());
+        }
+
+        IEnumerator MoveHammerUp(float delay = 0.4f)
+        {
+            yield return new WaitForSeconds(delay);
+            movement.MoveUp();
         }
     }
 }
