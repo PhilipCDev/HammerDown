@@ -6,7 +6,7 @@ namespace HammerDown.Map
 {
     public class Board : MonoBehaviour
     {
-        
+
         // !!!! Added this here, maybe wrong but needed it somewhere
         public BoardStatus boardStatus;
         

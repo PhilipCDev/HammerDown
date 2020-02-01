@@ -26,6 +26,15 @@ namespace HammerDown.Tools
             Game.instance.board.boardStatus.AddPlank(this);
         }
 
+        public override void OnGrab(Hand hand)
+        {
+            gameObject.transform.parent = hand.transform;
+            Vector3 angles = gameObject.transform.localEulerAngles;
+            angles.x = -90.0f;
+            angles.z = 0;
+            gameObject.transform.localEulerAngles = angles;
+        }
+
         public override void OnRelease(Hand hand)
         {
             if (nails >= 2)

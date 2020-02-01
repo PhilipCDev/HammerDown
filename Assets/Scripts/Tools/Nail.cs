@@ -11,6 +11,7 @@ namespace HammerDown.Tools
     public class Nail : GrabableObject, IHitable
     {
         public int timesToHit = 2;
+        public Vector3 handOffset;
         public LayerMask movementMask;
         public LayerMask hitMask;
         
@@ -30,6 +31,7 @@ namespace HammerDown.Tools
         protected override void SetUp()
         {
             _nailState = NailStates.Loose;
+            Debug.Log(Game.instance.board);
             Game.instance.board.boardStatus.AddNail(this);
             
         }
@@ -44,9 +46,10 @@ namespace HammerDown.Tools
                 return;
             }
 
-            // TODO maybe align the nail, such that his head faces the camera
-            
+            //Snap the nail to the hand
             gameObject.transform.parent = hand.transform;
+            gameObject.transform.localEulerAngles = Vector3.zero;
+            gameObject.transform.localPosition = handOffset;
             _nailState = NailStates.Holding;
         }
 
