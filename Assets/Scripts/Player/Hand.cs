@@ -12,6 +12,9 @@ namespace HammerDown.Player
         Movement movement;
         Animator animator;
 
+        public float fearPushStrength = 800;
+        public float onHitPushStrength = 500;
+
         List<GameObject> grabbedObjectsInRange = new List<GameObject>();
 
         GameObject activeGrabbedObject;
@@ -55,7 +58,7 @@ namespace HammerDown.Player
         {
             Debug.Log("Feared");
             Vector3 dir = (transform.position - fearer.transform.position).normalized;
-            movement.PushAway(dir, 800);
+            movement.PushAway(dir, fearPushStrength);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -153,7 +156,7 @@ namespace HammerDown.Player
         public void OnHit(Hammer hand)
         {
             Vector3 dir = - transform.right  + transform.up * 0.4f;
-            movement.PushAway(dir, 500);
+            movement.PushAway(dir, onHitPushStrength);
             GrabEnd();
         }
     }

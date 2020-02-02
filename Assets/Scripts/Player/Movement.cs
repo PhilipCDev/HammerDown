@@ -13,8 +13,13 @@ namespace HammerDown.Player
         public bool confinedToWall;
         public float distanceToWall = 1.2f;
         public float hitDistance = 0.2f;
-
+        public float floorDistance = 0.5f;
+        public float wallDistance = 0.3f;
+        public bool flipFloorNormal;
         float moveRamp;
+
+
+     
 
         public LayerMask movementMask;
         public LayerMask hitMask;
@@ -123,17 +128,21 @@ namespace HammerDown.Player
         {
             //Check Down to see if hitting ground
             if (Physics.Raycast(rigid.position, transform.forward,
-                out RaycastHit hitFloor, 0.5f, floorMask))
+                out RaycastHit hitFloor, floorDistance, floorMask))
             {
+                Debug.Log("SNAP TO FLOOR");
                 //Snap to Wall
                 transform.up = hitFloor.normal;
+                if (flipFloorNormal)
+                    transform.forward = -transform.forward;
                 OnWall = false;
                 return;
             }
 
             if (Physics.Raycast(rigid.position, -transform.forward,
-                out RaycastHit hitWall, 0.3f, wallMask))
+                out RaycastHit hitWall, wallDistance, wallMask))
             {
+                Debug.Log("SNAP TO WALL");
                 //Snap to Wall
                 transform.up = hitWall.normal;
                 OnWall = true;
