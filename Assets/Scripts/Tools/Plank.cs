@@ -23,7 +23,7 @@ namespace HammerDown.Tools
             _collider = gameObject.GetComponent<Collider>();
             _rectanglePos.leftBottomFront = _collider.bounds.min;
             _rectanglePos.rightTopBack = _collider.bounds.max;
-            Game.instance.board.boardStatus.AddPlank(this);
+            Game.instance.boardStatus.AddPlank(this);
         }
 
         public override void OnGrab(Hand hand)
@@ -59,8 +59,8 @@ namespace HammerDown.Tools
                 allNailPos.Add(new Vector2(nail.transform.position.x, nail.transform.position.y));
                 if (Game.instance.board.IsPlankFixed(_rectanglePos, allNailPos))
                 {
-                    Game.instance.board.boardStatus.RemovePlank(this);
-                    Game.instance.board.boardStatus.AddFixedPlanks(this);
+                    Game.instance.boardStatus.RemovePlank(this);
+                    Game.instance.boardStatus.AddFixedPlanks(this);
                 }
                 nails++;
             }

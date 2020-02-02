@@ -20,14 +20,14 @@ namespace HammerDown.Map
         {
             if(UnusedNails.Count == 0 && UnusedPlanks.Count == 0)
             {
-                //TODO: CALL END
+                Game.instance.GameOver();
                 ResetStatus();
             }
             else
             {
                 if (Game.instance.board.CalcHoleCoverage() >= 1f)
                 {
-                    //TODO: CALL END
+                    Game.instance.GameOver();
                     ResetStatus();
                 }
             }

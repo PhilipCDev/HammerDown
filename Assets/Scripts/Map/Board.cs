@@ -8,10 +8,7 @@ namespace HammerDown.Map
     public class Board : MonoBehaviour
     {
         private float friendlyness = 2;
-
-        //Hannah: Move to Game
-        public BoardStatus boardStatus;
-        
+     
         //List of all holes, just use and not change entries! Currently holes are not implemented
         public List<Hole> holes;
 
