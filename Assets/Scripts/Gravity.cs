@@ -7,14 +7,28 @@ using HammerDown.Player;
 namespace HammerDown.GameObjects
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class Gravity : MonoBehaviour
+    public class Gravity : MonoBehaviour, IGrabable
     {
         public float TimeUntilWarning = 4f;
         public float TimeFromWarningToDrop = 2f;
-        public bool changeKinematicState;
         public Animation WarningAnimation;
-        private bool cannotFall;
         private bool _enabled = true;
+        private int _grabbed = 0;
+        private int Grabbed
+        {
+            get
+            {
+                return _grabbed;
+            }
+            set
+            {
+                if (_grabbed > 0 && value < 1 && Enabled)
+                {
+                    StartWarningTimer();
+                }
+                _grabbed = value;
+            }
+        }
 
         [SerializeField]
         public bool Enabled
@@ -36,6 +50,14 @@ namespace HammerDown.GameObjects
                     {
                         StopCoroutine(dropTimer);
                     }
+                    WarningAnimation.Stop();
+                }
+                else
+                {
+                    if (Grabbed < 1)
+                    {
+                        StartWarningTimer();
+                    }
                 }
             }
         }
@@ -54,6 +76,14 @@ namespace HammerDown.GameObjects
             //OnTouchExit(null);
         }
 
+        private void StartWarningTimer()
+        {
+            if (warningTimer != null)
+            {
+                StopCoroutine(warningTimer);
+            }
+            warningTimer = StartCoroutine(Countdown(TimeUntilWarning, Warning));
+        }
  
         private IEnumerator Countdown(float time, TimerDegelate func)
         {
@@ -66,50 +96,11 @@ namespace HammerDown.GameObjects
             func();
         }
 
-        public void Stabilized()
-        {
-            if (_enabled == false || rigidBody == null)
-            {
-                return;
-            }
-
-            rigidBody.useGravity = false;
-            if(changeKinematicState)
-                rigidBody.isKinematic = true;
-
-            if (warningTimer != null)
-            {
-                StopCoroutine(warningTimer);
-            }
-            if (dropTimer != null)
-            {
-                StopCoroutine(dropTimer);
-            }
-        }
-
-        public void DeStabilized()
-        {
-            if (_enabled == false || rigidBody == null || cannotFall)
-            {
-                return;
-            }
-            if (warningTimer != null)
-            {
-                StopCoroutine(warningTimer);
-            }
-            warningTimer = StartCoroutine(Countdown(TimeUntilWarning,Warning));
-        }
-
-        public void CanNoLongerFall()
-        {
-            cannotFall = true;
-        }
 
         private void Drop()
         {
             rigidBody.useGravity = true;
-            if(changeKinematicState)
-                rigidBody.isKinematic = false;
+            rigidBody.isKinematic = false;
         }
 
         private void Shake()
@@ -132,5 +123,16 @@ namespace HammerDown.GameObjects
             dropTimer = StartCoroutine(Countdown(TimeFromWarningToDrop, Drop));
         }
 
+        public void OnGrab(Hand hand)
+        {
+            Grabbed++;
+            rigidBody.useGravity = false;
+            rigidBody.isKinematic = true;
+        }
+
+        public void OnRelease(Hand hand)
+        {
+            Grabbed--;
+        }
     }
 }
