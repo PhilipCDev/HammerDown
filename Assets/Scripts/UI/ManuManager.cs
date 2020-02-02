@@ -12,11 +12,11 @@ namespace HammerDown.UI
         public Animator anim;
         public GameObject HTP;
         public GameObject Menu;
+        private float timer;
         // Start is called before the first frame update
         void Start()
         {
-            HTP.SetActive(false);
-            Menu.SetActive(true);
+
         }
 
         // Update is called once per frame
@@ -32,16 +32,31 @@ namespace HammerDown.UI
 
         public void howToPlay()
         {
-            HTP.SetActive(false);
             Menu.SetActive(false);
+            Debug.Log("Miep");
+            StartCoroutine(goToHTP());
             anim.SetBool("goToHTP", true);
         }
         public void backToMenu()
         {
             HTP.SetActive(false);
-            Menu.SetActive(true);
+            StartCoroutine(goToMenu());
             anim.SetBool("goToHTP", false);
         }
+
+        public IEnumerator goToMenu()
+        {
+            yield return new WaitForSeconds(1f);
+            Menu.SetActive(true);
+        }
+
+        public IEnumerator goToHTP()
+        {
+            yield return new WaitForSeconds(1f);
+            HTP.SetActive(true);
+        }
+
     }
 
+    
 }
