@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using HammerDown.Interfaces;
 using HammerDown.Animals;
+using HammerDown.Sound;
 
 namespace HammerDown.Player
 {
@@ -158,6 +159,7 @@ namespace HammerDown.Player
             Vector3 dir = - transform.right  + transform.up * 0.4f;
             movement.PushAway(dir, onHitPushStrength);
             GrabEnd();
+            SoundManager.PlaySound(SoundEffects.HURT);
         }
     }
 }

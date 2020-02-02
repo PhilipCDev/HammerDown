@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using HammerDown.Interfaces;
+using HammerDown.Sound;
 
 namespace HammerDown.Player
 {
@@ -64,6 +65,7 @@ namespace HammerDown.Player
             hammerUpCoroutine = StartCoroutine(MoveHammerUp());
             animator.Play("Down");
             trigger.SetActive(true);
+            SoundManager.PlaySound(SoundEffects.HAMMER);
             if (cameraEffects != null)
             {
                 cameraEffects.Shake();

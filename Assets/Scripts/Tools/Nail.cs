@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using HammerDown.GameObjects;
 using HammerDown.Interfaces;
 using HammerDown.Player;
+using HammerDown.Sound;
 using UnityEngine;
 
 namespace HammerDown.Tools
@@ -83,6 +84,7 @@ namespace HammerDown.Tools
                     Debug.Log("Nail needs to be on board");
                     _nailState = NailStates.Destroyed;
                     Game.instance.boardStatus.RemoveNail(this);
+                    SoundManager.PlaySound(SoundEffects.NAILBROKE);
                     return;
                 }
 
@@ -114,6 +116,7 @@ namespace HammerDown.Tools
                     Debug.Log("Nail fixed in wall");
                     _nailState = NailStates.Fixed;
                     //Push Nail in Wall
+                    SoundManager.PlaySound(SoundEffects.SUCCESS);
                     gameObject.transform.localPosition += nailStep;
                     Game.instance.boardStatus.RemoveNail(this);
                 }
@@ -128,6 +131,7 @@ namespace HammerDown.Tools
             {
                 Debug.Log("Can't hit a destroyed nail");
                 Game.instance.boardStatus.RemoveNail(this);
+                SoundManager.PlaySound(SoundEffects.NAILBROKE);
             }
 
             if (_nailState == NailStates.Fixed)

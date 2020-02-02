@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using HammerDown.Player;
+using HammerDown.Sound;
 using UnityEngine;
 
 namespace HammerDown.Animals
@@ -72,6 +73,7 @@ namespace HammerDown.Animals
             ParticleSystem effect = Instantiate(DieEffect, transform.position, Quaternion.identity);
             effect.gameObject.SetActive(true);
             effect.Emit(paramam, 100);
+            SoundManager.PlaySound(SoundEffects.ANIMALDIE);
 
             StartCoroutine(Hide(0.5f));
         }
