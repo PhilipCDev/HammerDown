@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace HammerDown.Sound
 {
@@ -9,6 +11,12 @@ namespace HammerDown.Sound
     {
         private static SoundManager current;
         public AudioClip[] soundEffects;
+        public AudioClip[] hammerSounds;
+        public AudioClip[] hurtSounds;
+        public AudioClip[] animalDieSounds;
+        public AudioClip[] nailBrokeSounds;
+        public AudioClip[] successSounds;
+
 
         public AudioClip menuMusic;
         public AudioClip musicIngame;
@@ -19,31 +27,40 @@ namespace HammerDown.Sound
         void Start()
         {
             current = this;
+            cameraEar.clip = menuMusic;
+            
         }
 
         public static void PlaySound(SoundEffects effect)
         {
             AudioSource.PlayClipAtPoint(current.soundEffects[(int)effect], Camera.main.transform.position);
-        }
-
-        public static void SetMusic(bool menu)
-        {
-
-//            current.cameraEar.
-        }
-
-        public void SwitchMusic(bool menu)
-        {
-            StopAllCoroutines();
-            if (menu)
+            var index = 0;
+            switch (effect)
             {
-                StartCoroutine(SwitchMusic(menuMusic, cameraEar));
-            }
-            else
-            {
-                StartCoroutine(SwitchMusic(musicIngame, cameraEar));
+                case SoundEffects.HAMMER:
+                    index = Random.Range(0, current.hammerSounds.Length - 1);
+                    AudioSource.PlayClipAtPoint(current.hammerSounds[index], Camera.main.transform.position);
+                    break;
+                case SoundEffects.HURT:
+                    index = Random.Range(0, current.hurtSounds.Length - 1);
+                    AudioSource.PlayClipAtPoint(current.hurtSounds[index], Camera.main.transform.position);
+                    break;
+                case SoundEffects.ANIMALDIE:
+                    index = Random.Range(0, current.animalDieSounds.Length - 1);
+                    AudioSource.PlayClipAtPoint(current.animalDieSounds[index], Camera.main.transform.position);
+                    break;
+                case SoundEffects.NAILBROKE:
+                    index = Random.Range(0, current.nailBrokeSounds.Length - 1);
+                    AudioSource.PlayClipAtPoint(current.nailBrokeSounds[index], Camera.main.transform.position);
+                    break;
+                case SoundEffects.SUCCESS:
+                    index = Random.Range(0, current.successSounds.Length - 1);
+                    AudioSource.PlayClipAtPoint(current.successSounds[index], Camera.main.transform.position);
+                    break;
             }
         }
+
+        
         public IEnumerator SwitchMusic(AudioClip music, AudioSource source)
         {
             for(float f = 0; f<1; f+= Time.deltaTime)
@@ -58,6 +75,12 @@ namespace HammerDown.Sound
                 yield return new WaitForEndOfFrame();
                 source.volume = f * musicVolume;
             }
+        }
+
+        private IEnumerator Play()
+        {
+            yield return new WaitForSeconds(cameraEar.clip.length);
+            cameraEar.clip = musicIngame;
         }
     }
 
