@@ -12,6 +12,8 @@ namespace HammerDown.Map
      
         //List of all holes, just use and not change entries! Currently holes are not implemented
         public List<Hole> holes;
+        public Transform HandPos;
+        public Transform HammerPos;
 
         #region public Functions
         //Bool function. Give a point and returns if it is on a board. Check for Nail (Nail can only be nailed in if OnBoard is true)
