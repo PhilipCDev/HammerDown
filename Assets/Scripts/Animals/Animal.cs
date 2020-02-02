@@ -69,5 +69,10 @@ namespace HammerDown.Animals
         {
             throw new NotImplementedException();
         }
+
+        public virtual void Die()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

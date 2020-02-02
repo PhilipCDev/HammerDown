@@ -61,5 +61,15 @@ namespace HammerDown.Animals
         {
             Debug.Log("Spider got hit!");
         }
+        
+        public override void Die()
+        {
+            
+        }
+
+        private IEnumerator Hide(float time)
+        {
+            yield return new WaitForSeconds(time);
+        }
     }
 }

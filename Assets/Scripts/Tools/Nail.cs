@@ -51,7 +51,7 @@ namespace HammerDown.Tools
             gameObject.transform.localEulerAngles = Vector3.zero;
             gameObject.transform.localPosition = handOffset;
             _nailState = NailStates.Holding;
-            _gravity.Stabilized();
+            _gravity.Enabled = false;
         }
 
         public override void OnRelease(Hand hand)
@@ -61,11 +61,11 @@ namespace HammerDown.Tools
             if (_nailState == NailStates.Holding)
             {
                 gameObject.transform.parent = null;
-                _gravity.DeStabilized();
+                _gravity.Enabled = true;
                 _nailState = NailStates.Loose;
                 return;
             }
-            _gravity.Stabilized();
+            _gravity.Enabled = false;
         }
 
         public void OnHit(Hammer hammer)
