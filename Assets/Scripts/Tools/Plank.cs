@@ -59,8 +59,8 @@ namespace HammerDown.Tools
                 allNailPos.Add(new Vector2(nail.transform.position.x, nail.transform.position.y));
                 if (Game.instance.board.IsPlankFixed(_rectanglePos, allNailPos))
                 {
-                    Game.instance.board.boardStatus.RemovePlank(this);
-                    Game.instance.board.boardStatus.AddFixedPlanks(this);
+                    nail.transform.parent = this.transform;
+                    Game.instance.boardStatus.AddFixedPlanks(this);
                 }
                 nails++;
             }
