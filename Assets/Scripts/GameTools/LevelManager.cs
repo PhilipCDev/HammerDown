@@ -3,7 +3,8 @@ using HammerDown.Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace HammerDown {
+namespace HammerDown.GameTools
+{
     public class LevelManager : MonoBehaviour
     {
         public List<Board> boards;
@@ -21,8 +22,6 @@ namespace HammerDown {
 
             Game.instance.boardStatus.StartChecking();
             Game.instance.GameStart();
-            //time
-
         }
     }
 }
