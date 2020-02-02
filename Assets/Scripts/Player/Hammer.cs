@@ -17,6 +17,8 @@ namespace HammerDown.Player
 
         bool init;
 
+        public CameraEffects cameraEffects;
+
 
         private void Awake()
         {
@@ -62,6 +64,10 @@ namespace HammerDown.Player
             hammerUpCoroutine = StartCoroutine(MoveHammerUp());
             animator.Play("Down");
             trigger.SetActive(true);
+            if (cameraEffects != null)
+            {
+                cameraEffects.Shake();
+            }
         }
 
         IEnumerator MoveHammerUp(float delay = 0.4f)
