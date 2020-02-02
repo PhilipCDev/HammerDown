@@ -7,7 +7,7 @@ using HammerDown.Animals;
 namespace HammerDown.Player
 {
     [RequireComponent(typeof(Movement))]
-    public class Hand : MonoBehaviour
+    public class Hand : MonoBehaviour, IHitable
     {
         Movement movement;
         Animator animator;
@@ -16,9 +16,18 @@ namespace HammerDown.Player
 
         GameObject activeGrabbedObject;
 
+        bool init;
+
         private void Awake()
         {
+            if (init)
+                return;
+
             Game.instance.RegisterHand(this);
+            Game.instance.GameStart += delegate { gameObject.SetActive(true); };
+            Game.instance.GameOver += delegate { gameObject.SetActive(false); };
+            gameObject.SetActive(false);
+            init = true;
         }
 
         private void Start()
@@ -45,7 +54,8 @@ namespace HammerDown.Player
         public void Feared(Animal fearer)
         {
             Debug.Log("Feared");
-            // TODO Philip, add this here
+            Vector3 dir = (transform.position - fearer.transform.position).normalized;
+            movement.PushAway(dir, 800);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -138,6 +148,13 @@ namespace HammerDown.Player
                 }
                 animator.SetBool("released", true);
             }
+        }
+
+        public void OnHit(Hammer hand)
+        {
+            Vector3 dir = - transform.right  + transform.up * 0.4f;
+            movement.PushAway(dir, 500);
+            GrabEnd();
         }
     }
 }

@@ -8,6 +8,8 @@ namespace HammerDown.Animals
 {
     public class Spider : Animal
     {
+        public ParticleSystem DieEffect;
+
         private bool inHandRange = false;
         protected override void SetUp()
         {
@@ -65,7 +67,13 @@ namespace HammerDown.Animals
         
         public override void Die()
         {
-            StartCoroutine(Hide(2f));
+            ParticleSystem.EmitParams paramam = new ParticleSystem.EmitParams();
+            paramam.position = transform.position;
+            ParticleSystem effect = Instantiate(DieEffect, transform.position, Quaternion.identity);
+            effect.gameObject.SetActive(true);
+            effect.Emit(paramam, 100);
+
+            StartCoroutine(Hide(0.5f));
         }
 
         private IEnumerator Hide(float time)

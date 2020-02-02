@@ -11,19 +11,30 @@ namespace HammerDown.Player
     {
         Movement movement;
         Animator animator;
+        public GameObject trigger;
 
         Coroutine hammerUpCoroutine;
+
+        bool init;
 
 
         private void Awake()
         {
+            if (init)
+                return;
+
             Game.instance.RegisterHammer(this);
+            Game.instance.GameStart += delegate { gameObject.SetActive(true); };
+            Game.instance.GameOver += delegate { gameObject.SetActive(false); };
+            gameObject.SetActive(false);
+            init = true;
         }
 
         private void Start()
         {
             movement = GetComponent<Movement>();
             animator = GetComponentInChildren<Animator>();
+            trigger.SetActive(false);
         }
 
         public void Trigger(InputAction.CallbackContext context)
@@ -50,6 +61,7 @@ namespace HammerDown.Player
             if (hammerUpCoroutine != null) StopCoroutine(MoveHammerUp());
             hammerUpCoroutine = StartCoroutine(MoveHammerUp());
             animator.Play("Down");
+            trigger.SetActive(true);
         }
 
         IEnumerator MoveHammerUp(float delay = 0.4f)
@@ -57,6 +69,7 @@ namespace HammerDown.Player
             yield return new WaitForSeconds(delay);
             movement.MoveUp();
             animator.Play("Up");
+            trigger.SetActive(false);
         }
     }
 }
