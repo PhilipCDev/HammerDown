@@ -13,7 +13,7 @@ namespace HammerDown.Sound
         public AudioClip menuMusic;
         public AudioClip musicIngame;
 
-        public AudioListener cameraEar;
+        public AudioSource cameraEar;
 
         void Start()
         {
@@ -27,7 +27,7 @@ namespace HammerDown.Sound
 
         public static void SetMusic(bool menu)
         {
-
+//            current.cameraEar.
         }
     }
 
