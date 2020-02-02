@@ -60,16 +60,18 @@ namespace HammerDown.Animals
         public override void OnHit(Hammer hand)
         {
             Debug.Log("Spider got hit!");
+            Die();
         }
         
         public override void Die()
         {
-            
+            StartCoroutine(Hide(2f));
         }
 
         private IEnumerator Hide(float time)
         {
             yield return new WaitForSeconds(time);
+            Destroy(this.gameObject);
         }
     }
 }
