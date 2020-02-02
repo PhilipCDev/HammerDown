@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using HammerDown.Player;
 using UnityEngine;
 
 namespace HammerDown.Animals
 {
     public class Spider : Animal
     {
+        private bool inHandRange = false;
         protected override void SetUp()
         {
-            currentTarget = Targets.Hand;
+            currentTarget = Targets.Hole;
             _targetPosition = GetTargetPosition(currentTarget);
             _animator = GetComponent<Animator>();
+            
         }
 
         protected override void GoToTarget()
@@ -35,11 +38,28 @@ namespace HammerDown.Animals
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.CompareTag("Hand"))
+            if (!other.CompareTag("Hand") || inHandRange)
             {
                 return;
             }
+
+            inHandRange = true;
             Game.instance.hand.Feared(this);
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (!other.CompareTag("Hand") || !inHandRange)
+            {
+                return;
+            }
+            Debug.Log("Not in Hand Range anymore");
+            inHandRange = false;
+        }
+
+        public override void OnHit(Hammer hand)
+        {
+            Debug.Log("Spider got hit!");
         }
     }
 }
