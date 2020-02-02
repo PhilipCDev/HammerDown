@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8531305891121884961
+--- !u!1 &5142877809310792852
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,50 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8531305891121884969}
-  - component: {fileID: 8531305891121884966}
-  - component: {fileID: 8531305891121884967}
-  - component: {fileID: 8531305891121884964}
-  - component: {fileID: 8531305891121884965}
-  - component: {fileID: 8531305891121884962}
-  - component: {fileID: 8531305891121884963}
-  - component: {fileID: 8531305891121884960}
+  - component: {fileID: 1818407088157776310}
+  - component: {fileID: 9180711974071487950}
+  - component: {fileID: 7708402318676605818}
+  - component: {fileID: 1162213214650326788}
   m_Layer: 11
-  m_Name: Plank
+  m_Name: Plank mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8531305891121884969
+--- !u!4 &1818407088157776310
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8531305891121884961}
+  m_GameObject: {fileID: 5142877809310792852}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.49, y: 3.065, z: -1.35}
-  m_LocalScale: {x: 4.0875, y: 1.15, z: 0.24374999}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 8531305891121884969}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8531305891121884966
+--- !u!33 &9180711974071487950
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8531305891121884961}
+  m_GameObject: {fileID: 5142877809310792852}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &8531305891121884967
+--- !u!23 &7708402318676605818
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8531305891121884961}
+  m_GameObject: {fileID: 5142877809310792852}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -84,6 +80,56 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!111 &1162213214650326788
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5142877809310792852}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!1 &8531305891121884961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8531305891121884969}
+  - component: {fileID: 8531305891121884964}
+  - component: {fileID: 8531305891121884965}
+  - component: {fileID: 8531305891121884962}
+  - component: {fileID: 8531305891121884960}
+  m_Layer: 11
+  m_Name: Plank
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8531305891121884969
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8531305891121884961}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.49, y: 3.065, z: -1.35}
+  m_LocalScale: {x: 4.0875, y: 1.15, z: 0.24374999}
+  m_Children:
+  - {fileID: 1818407088157776310}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &8531305891121884964
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -126,22 +172,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!111 &8531305891121884963
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8531305891121884961}
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: b905f82005a1cae4da621ab93f29af75, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: b905f82005a1cae4da621ab93f29af75, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!114 &8531305891121884960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,10 +179,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8531305891121884961}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a5f4ac1629a1854e9b1c98f154c2938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   TimeUntilWarning: 4
   TimeFromWarningToDrop: 2
+  changeKinematicState: 0
+  WarningAnimation: {fileID: 1162213214650326788}
