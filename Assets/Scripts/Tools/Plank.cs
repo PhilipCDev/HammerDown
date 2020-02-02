@@ -47,19 +47,19 @@ namespace HammerDown.Tools
                 Debug.Log("Deactivated Gravity of " + gameObject.name + ", because plank has more than 2 nails");
             }
             gameObject.transform.parent = null;
-
         }
 
         public void AddNail(Nail nail)
         {
             if (!allNails.Contains(nail))
             {
+                Game.instance.boardStatus.RemovePlank(this);
                 Debug.Log("Added nail to plank");
                 allNails.Add(nail);
                 allNailPos.Add(new Vector2(nail.transform.position.x, nail.transform.position.y));
                 if (Game.instance.board.IsPlankFixed(_rectanglePos, allNailPos))
                 {
-                    Game.instance.boardStatus.RemovePlank(this);
+
                     Game.instance.boardStatus.AddFixedPlanks(this);
                 }
                 nails++;
@@ -69,7 +69,6 @@ namespace HammerDown.Tools
                 Debug.Log("Nail Already part of plank");
             }
         }
-
     }
     
 }
