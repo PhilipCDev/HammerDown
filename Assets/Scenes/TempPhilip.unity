@@ -2647,6 +2647,7 @@ GameObject:
   - component: {fileID: 494351657}
   - component: {fileID: 494351656}
   - component: {fileID: 494351659}
+  - component: {fileID: 494351660}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2750,6 +2751,102 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!82 &494351660
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494351655}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &495089081
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7173,7 +7270,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 778375060}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1063148184
+--- !u!114 &1063148187
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -32470,15 +32567,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundEffects: []
-  hammerSounds: []
-  hurtSounds: []
-  animalDieSounds: []
-  nailBrokeSounds: []
-  successSounds: []
-  menuMusic: {fileID: 0}
-  musicIngame: {fileID: 0}
-  cameraEar: {fileID: 0}
-  musicVolume: 0
+  hammerSounds:
+  - {fileID: 8300000, guid: 4f8832774e7819944acf2a44db9e2ca8, type: 3}
+  - {fileID: 8300000, guid: fbb9efe52e4e4784a9a746aabb58950f, type: 3}
+  - {fileID: 8300000, guid: 9e7602cc3cca96a45a7e5e1b27df15cb, type: 3}
+  - {fileID: 8300000, guid: 4f3f6f2f2c34885468fe25c8787f555a, type: 3}
+  - {fileID: 8300000, guid: 4c8e25916b989364d94e384b03243885, type: 3}
+  - {fileID: 8300000, guid: f046b59aa97d27249a9b14d6780a08b4, type: 3}
+  - {fileID: 8300000, guid: 86aa18e5b8c28474f91b50bcc6cbb566, type: 3}
+  hurtSounds:
+  - {fileID: 8300000, guid: 4d21bf2287d7458449ac35cd39026d11, type: 3}
+  - {fileID: 8300000, guid: a654b2fd0ee3c5f408419ae1af53988a, type: 3}
+  - {fileID: 8300000, guid: 26dd21ad4ab48fe4489bcd3291c99f85, type: 3}
+  animalDieSounds:
+  - {fileID: 8300000, guid: 5dc51f3a5c5145947af283d3a3c75182, type: 3}
+  - {fileID: 8300000, guid: 88c1b06ee4938a04a943a74d62d42f2c, type: 3}
+  - {fileID: 8300000, guid: b9c4482b5c7f7ee4b83bb4425fbf521e, type: 3}
+  - {fileID: 8300000, guid: e7c37d19851d2f04f8eed718f3159f8d, type: 3}
+  - {fileID: 8300000, guid: d0857aedf78154449956193ab237f804, type: 3}
+  - {fileID: 8300000, guid: 8dfe5a907fbcaf841b7142b252fab67e, type: 3}
+  - {fileID: 8300000, guid: 75a247cfc07d3fd40809fad7a5a5cc37, type: 3}
+  - {fileID: 8300000, guid: 951dc1781f1dd5e4d8ae9da0bf014872, type: 3}
+  nailBrokeSounds:
+  - {fileID: 8300000, guid: 0e24426129af6604cb99e81a1ff6cf8f, type: 3}
+  - {fileID: 8300000, guid: b2e4b3a1256363e47b9f58a0c552b617, type: 3}
+  successSounds:
+  - {fileID: 8300000, guid: 83c5ea46f5ba8d6498b42816375b7a08, type: 3}
+  menuMusic: {fileID: 8300000, guid: c5858b16db71b3645b21adf61ff2701d, type: 3}
+  musicIngame: {fileID: 8300000, guid: 65ee51b2e520fd440a73cf9e315fa2e8, type: 3}
+  cameraEar: {fileID: 494351660}
+  musicVolume: 1
 --- !u!4 &8270145514663802534
 Transform:
   m_ObjectHideFlags: 0

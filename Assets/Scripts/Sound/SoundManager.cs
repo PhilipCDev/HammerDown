@@ -33,7 +33,6 @@ namespace HammerDown.Sound
 
         public static void PlaySound(SoundEffects effect)
         {
-            AudioSource.PlayClipAtPoint(current.soundEffects[(int)effect], Camera.main.transform.position);
             var index = 0;
             switch (effect)
             {
