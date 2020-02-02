@@ -14,6 +14,7 @@ namespace HammerDown.UI {
         {
             Game.instance.GameStart += () => { gameObject.SetActive(true); };
             Game.instance.GameOver += () => { gameObject.SetActive(false); };
+            gameObject.SetActive(false);
         }
 
         public void Update()
