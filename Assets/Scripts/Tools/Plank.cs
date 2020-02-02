@@ -25,12 +25,23 @@ namespace HammerDown.Tools
             _rectanglePos.rightTopBack = _collider.bounds.max;
         }
 
+        public override void OnTouchEnter(Hand hand)
+        {
+            _gravity.Stabilized();
+        }
+
+        public override void OnTouchExit(Hand hand)
+        {
+            _gravity.DeStabilized();
+        }
+
         public override void OnGrab(Hand hand)
         {
             if (allNails.Count > 0)
             {
                 return;
             }
+            
             gameObject.transform.parent = hand.transform;
             Vector3 angles = gameObject.transform.localEulerAngles;
             angles.x = -90.0f;
@@ -42,7 +53,7 @@ namespace HammerDown.Tools
         {
             if (nails >= 2)
             {
-                _gravity.Enabled = false;
+                _gravity.CanNoLongerFall();
                 Debug.Log("Deactivated Gravity of " + gameObject.name + ", because plank has more than 2 nails");
             }
             gameObject.transform.parent = null;
