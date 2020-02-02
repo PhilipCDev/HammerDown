@@ -392,9 +392,9 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!4 &553637098 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 318195572, guid: 848d083c4bddda643ab56692b6d7555e,
+--- !u!1 &553637097 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 318195571, guid: 848d083c4bddda643ab56692b6d7555e,
     type: 3}
   m_PrefabInstance: {fileID: 8940808051699789422}
   m_PrefabAsset: {fileID: 0}
@@ -536,6 +536,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 90947869, guid: 3d80052c5cb978c4e8ba234e53ff6286, type: 3}
+      propertyPath: m_Radius
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 5633241959722741416, guid: 3d80052c5cb978c4e8ba234e53ff6286,
         type: 3}
       propertyPath: m_Name
@@ -1434,7 +1438,7 @@ GameObject:
   - component: {fileID: 1770941402}
   - component: {fileID: 1770941406}
   - component: {fileID: 1770941407}
-  m_Layer: 12
+  m_Layer: 16
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1529,6 +1533,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holes:
   - {fileID: 980977527}
+  HandPos: {fileID: 0}
+  HammerPos: {fileID: 0}
+  maxTime: 0
 --- !u!114 &1770941407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1541,6 +1548,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f73bc60233f2ed45b38c1d9a64c16c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addNails: []
+  addPlanks: []
 --- !u!4 &1777383559 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8531305891121884969, guid: 4a72a3d4e765e0749950900b34172988,
@@ -1939,6 +1948,26 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.017940879
       objectReference: {fileID: 0}
+    - target: {fileID: 3189879876185854320, guid: 03ab5e2019375f74fae72abff68b269e,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.21051238
+      objectReference: {fileID: 0}
+    - target: {fileID: 3189879876185854320, guid: 03ab5e2019375f74fae72abff68b269e,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.054649547
+      objectReference: {fileID: 0}
+    - target: {fileID: 3189879876185854320, guid: 03ab5e2019375f74fae72abff68b269e,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.87756634
+      objectReference: {fileID: 0}
+    - target: {fileID: 3189879876185854320, guid: 03ab5e2019375f74fae72abff68b269e,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -0.15861535
+      objectReference: {fileID: 0}
     - target: {fileID: 3817813626065390195, guid: 03ab5e2019375f74fae72abff68b269e,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -2023,6 +2052,21 @@ PrefabInstance:
         type: 3}
       propertyPath: speed
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5906029810272786956, guid: 03ab5e2019375f74fae72abff68b269e,
+        type: 3}
+      propertyPath: wallMask.m_Bits
+      value: 65536
+      objectReference: {fileID: 0}
+    - target: {fileID: 5906029810272786956, guid: 03ab5e2019375f74fae72abff68b269e,
+        type: 3}
+      propertyPath: hitMask.m_Bits
+      value: 80896
+      objectReference: {fileID: 0}
+    - target: {fileID: 5906029810272786956, guid: 03ab5e2019375f74fae72abff68b269e,
+        type: 3}
+      propertyPath: movementMask.m_Bits
+      value: 73728
       objectReference: {fileID: 0}
     - target: {fileID: 5906029810272786958, guid: 03ab5e2019375f74fae72abff68b269e,
         type: 3}
@@ -2276,11 +2320,15 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 69638a4fcfca74a42a84e65e2360a78d, type: 2}
+    - target: {fileID: 2003448871, guid: 848d083c4bddda643ab56692b6d7555e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8477836123199814162, guid: 848d083c4bddda643ab56692b6d7555e,
         type: 3}
       propertyPath: trigger
       value: 
-      objectReference: {fileID: 553637098}
+      objectReference: {fileID: 553637097}
     - target: {fileID: 8481334454072443018, guid: 848d083c4bddda643ab56692b6d7555e,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -2390,6 +2438,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Hammer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940808051139133688, guid: 848d083c4bddda643ab56692b6d7555e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940808051139133689, guid: 848d083c4bddda643ab56692b6d7555e,
+        type: 3}
+      propertyPath: movementMask.m_Bits
+      value: 73728
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940808051139133689, guid: 848d083c4bddda643ab56692b6d7555e,
+        type: 3}
+      propertyPath: wallMask.m_Bits
+      value: 65536
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940808051139133689, guid: 848d083c4bddda643ab56692b6d7555e,
+        type: 3}
+      propertyPath: hitMask.m_Bits
+      value: 77056
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940808051139133689, guid: 848d083c4bddda643ab56692b6d7555e,
+        type: 3}
+      propertyPath: floorMask.m_Bits
+      value: 8192
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1073241523, guid: 848d083c4bddda643ab56692b6d7555e, type: 3}

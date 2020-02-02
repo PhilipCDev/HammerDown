@@ -22,8 +22,8 @@ TagManager:
   - Floor
   - Hole
   - Spider
-  - 
-  - 
+  - MovementWall
+  - HammerPhysics
   - 
   - 
   - 

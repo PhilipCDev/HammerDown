@@ -152,9 +152,9 @@ namespace HammerDown.Player
 
         public void OnHit(Hammer hand)
         {
-            //TODO
-            //Vector3 dir = - transform.right;
-            //movement.PushAway(dir, 300);
+            Vector3 dir = - transform.right  + transform.up * 0.4f;
+            movement.PushAway(dir, 500);
+            GrabEnd();
         }
     }
 }
