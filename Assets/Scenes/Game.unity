@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: a0f4366c442f41844943f552401fae40,
     type: 2}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -5137,6 +5137,7 @@ Transform:
   m_Children:
   - {fileID: 1502094866}
   - {fileID: 1484668859}
+  - {fileID: 1814892100}
   m_Father: {fileID: 40783581}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13113,6 +13114,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1809420473}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1814892100 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3939718392479232689, guid: 71343436a1ec69a4f9a8375ae9511d68,
+    type: 3}
+  m_PrefabInstance: {fileID: 1991019752}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1828843256
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14114,7 +14121,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 719655733}
     m_Modifications:
     - target: {fileID: 3939718392479232688, guid: 71343436a1ec69a4f9a8375ae9511d68,
         type: 3}
@@ -14159,7 +14166,7 @@ PrefabInstance:
     - target: {fileID: 3939718392479232689, guid: 71343436a1ec69a4f9a8375ae9511d68,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3939718392479232689, guid: 71343436a1ec69a4f9a8375ae9511d68,
         type: 3}
