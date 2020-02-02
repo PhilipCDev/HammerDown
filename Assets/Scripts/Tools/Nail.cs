@@ -68,8 +68,14 @@ namespace HammerDown.Tools
             _gravity.Enabled = false;
         }
 
+        private void Update()
+        {
+            Debug.DrawRay(transform.position + transform.up * 0.5f,- transform.up, Color.blue);
+        }
+
         public void OnHit(Hammer hammer)
         {
+            Debug.Log("Hit Nail");
             if (_nailState == NailStates.Holding && _stateHolding)
             {
                 if (!Game.instance.board.IsOnBoard(transform))
@@ -79,20 +85,25 @@ namespace HammerDown.Tools
                     Game.instance.boardStatus.RemoveNail(this);
                     return;
                 }
-                
-                if (Physics.Raycast(rigid.position, - transform.up, 
+
+                if (Physics.Raycast(rigid.position, -transform.up,
                     out RaycastHit hit, 1000.0f, movementMask))
                 {
                     hit.transform.gameObject.GetComponent<Plank>().AddNail(this);
-                    
+                    Debug.Log("First Hit on Nail");
+                    _hitCounter++;
+                    _nailState = NailStates.ABitInWall;
+                    //Push Nail in Wall
+                    gameObject.transform.localPosition += nailStep;
+                    return;
                 }
                 
-                Debug.Log("First Hit on Nail");
-                _hitCounter++;
-                _nailState = NailStates.ABitInWall;
-                //Push Nail in Wall
-                gameObject.transform.localPosition += nailStep;
+                Debug.Log("No Plank behind!");
+                _nailState = NailStates.Destroyed;
+                Game.instance.boardStatus.RemoveNail(this);
                 return;
+
+                
             }
             
             if (_nailState == NailStates.ABitInWall && _stateHolding)

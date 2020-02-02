@@ -51,6 +51,7 @@ namespace HammerDown.Tools
 
         public void AddNail(Nail nail)
         {
+            Debug.Log("AddNail function");
             if (!allNails.Contains(nail))
             {
                 Game.instance.boardStatus.RemovePlank(this);

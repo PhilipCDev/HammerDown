@@ -40,17 +40,17 @@ namespace HammerDown.Tools
 
         public virtual void OnTouchEnter(Hand hand)
         {
-            Debug.Log("Hand touch start: " + gameObject.name);
+            //Debug.Log("Hand touch start: " + gameObject.name);
         }
 
         public virtual void OnTouchStay(Hand hand)
         {
-            Debug.Log("Hand touch: " + gameObject.name);
+            //Debug.Log("Hand touch: " + gameObject.name);
         }
 
         public virtual void OnTouchExit(Hand hand)
         {
-            Debug.Log("Hand touch exit: " + gameObject.name);
+            //Debug.Log("Hand touch exit: " + gameObject.name);
         }
     }
     
