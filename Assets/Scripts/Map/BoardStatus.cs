@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 namespace HammerDown.Map
 {
@@ -25,7 +26,7 @@ namespace HammerDown.Map
             }
             else
             {
-                if (Game.instance.board.CalcHoleCoverage() >= 1f)
+                if (Game.instance.board.CalcHoleCoverage(FixedPlanks.ToList()) >= 0.95f)
                 {
                     Game.instance.GameOver();
                     ResetStatus();
