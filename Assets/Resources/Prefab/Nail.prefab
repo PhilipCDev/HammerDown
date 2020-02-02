@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 429187397460809747}
   - component: {fileID: 5960944616447074960}
   - component: {fileID: 8020790774593568776}
+  - component: {fileID: 6304663410421029405}
   m_Layer: 10
   m_Name: NagelModel
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3876956248299309024}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -44.855003, y: 0, z: -16.635}
 --- !u!33 &5960944616447074960
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -79,6 +80,22 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!111 &6304663410421029405
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2969566378330608196}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: b905f82005a1cae4da621ab93f29af75, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: b905f82005a1cae4da621ab93f29af75, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &3876956248299309033
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,7 +109,6 @@ GameObject:
   - component: {fileID: 3876956248299309034}
   - component: {fileID: 3876956248299309037}
   - component: {fileID: 3876956248299309035}
-  - component: {fileID: 924605943}
   m_Layer: 10
   m_Name: Nail
   m_TagString: Untagged
@@ -148,9 +164,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a5f4ac1629a1854e9b1c98f154c2938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeUntilWarning: 0.5
-  TimeFromWarningToDrop: 0.8
+  TimeUntilWarning: 1
+  TimeFromWarningToDrop: 3
   changeKinematicState: 1
+  WarningAnimation: {fileID: 6304663410421029405}
 --- !u!65 &3876956248299309037
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -180,19 +197,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!111 &924605943
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3876956248299309033}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations:
-  - {fileID: 7400000, guid: b905f82005a1cae4da621ab93f29af75, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
