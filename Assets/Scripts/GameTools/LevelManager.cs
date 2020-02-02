@@ -18,7 +18,10 @@ namespace HammerDown.GameTools
             Game.instance.hand.transform.position = Game.instance.board.HandPos.position;
             Game.instance.hand.transform.rotation = Game.instance.board.HandPos.rotation;
             Game.instance.hammer.transform.position = Game.instance.board.HammerPos.position;
-            Game.instance.hammer.transform.position = Game.instance.board.HammerPos.position;
+            Game.instance.hammer.transform.rotation = Game.instance.board.HammerPos.rotation;
+
+            Camera.main.transform.position = Game.instance.board.CameraPos.position;
+            Camera.main.transform.rotation = Game.instance.board.CameraPos.rotation;
 
             Game.instance.boardStatus.StartChecking();
             Game.instance.GameStart();

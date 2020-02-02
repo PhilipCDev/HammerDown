@@ -14,6 +14,7 @@ namespace HammerDown.Map
         public List<Hole> holes;
         public Transform HandPos;
         public Transform HammerPos;
+        public Transform CameraPos;
         public float maxTime;
 
         #region public Functions
