@@ -818,6 +818,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GGJ2020_Spider Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5633241959722741416, guid: 3d80052c5cb978c4e8ba234e53ff6286,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8680145602850299067, guid: 3d80052c5cb978c4e8ba234e53ff6286,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1508,6 +1513,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holes:
   - {fileID: 826974619}
+  HandPos: {fileID: 0}
+  HammerPos: {fileID: 0}
 --- !u!114 &1770941407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1520,6 +1527,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f73bc60233f2ed45b38c1d9a64c16c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addNails: []
+  addPlanks: []
 --- !u!4 &1777383559 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8531305891121884969, guid: 4a72a3d4e765e0749950900b34172988,
