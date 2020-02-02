@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using HammerDown.Tools;
 
 namespace HammerDown.Map
 {
@@ -65,9 +66,34 @@ namespace HammerDown.Map
         }
 
         //used for evaluating points, you do not need this
-        public float CalcHoleCoverage()
+        public float CalcHoleCoverage(List<Plank> planks)
         {
-            return 0;
+            float sum = 0;
+            foreach(Hole hole in holes)
+            {
+                float bestValue = 0;
+                foreach(Plank plank in planks)
+                {
+                    Bounds boundA = plank.GetComponent<Collider>().bounds;
+                    boundA.extents += transform.forward;
+
+
+                    Bounds boundB = hole.GetComponent<Collider>().bounds;
+                    Vector3 invForward = new Vector3(1 - transform.forward.x, 1 - transform.forward.y, 1 - transform.forward.z);
+
+                    Vector3 sizeA = boundA.size;
+                    boundA.Encapsulate(boundB);
+                    Vector3 sizeABDiff = boundA.size-sizeA;
+
+                    float value = (1 - Mathf.Clamp((sizeABDiff.x / boundB.size.x), 0, 1)) * (1 - Mathf.Clamp((sizeABDiff.y / boundB.size.y), 0, 1)) * (1 - Mathf.Clamp((sizeABDiff.z / boundB.size.z), 0, 1)); 
+                    if (value > bestValue)
+                    {
+                        bestValue = value;
+                    }
+                }
+                sum += bestValue;
+            }
+            return sum / (float) holes.Count;
         }
         #endregion
     }
