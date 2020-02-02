@@ -16,7 +16,7 @@ namespace HammerDown.UI
         // Start is called before the first frame update
         void Start()
         {
-
+            Game.instance.GameStart += delegate { gameObject.SetActive(false); };
         }
 
         // Update is called once per frame
