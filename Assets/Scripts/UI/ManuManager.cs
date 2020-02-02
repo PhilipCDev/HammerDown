@@ -12,11 +12,17 @@ namespace HammerDown.UI
         public Animator anim;
         public GameObject HTP;
         public GameObject Menu;
+        public Transform cameraMainPos;
         private float timer;
         // Start is called before the first frame update
         void Start()
         {
             Game.instance.GameStart += delegate { gameObject.SetActive(false); };
+            Game.instance.GameOver += delegate { gameObject.SetActive(true);
+                Camera.main.transform.position = cameraMainPos.position;
+                Camera.main.transform.rotation = cameraMainPos.rotation;
+            
+            };
         }
 
         // Update is called once per frame
