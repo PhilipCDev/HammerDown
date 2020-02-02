@@ -60,6 +60,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &157226652
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5633241959722741416}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.859493, y: 1, z: 4.2392826}
+  m_Center: {x: -0.90261585, y: 1.5566437e-15, z: 0.09233592}
 --- !u!95 &122106179
 Animator:
   serializedVersion: 3
@@ -94,19 +107,8 @@ MonoBehaviour:
   currentTarget: 0
   speed: 1
   active: 1
---- !u!65 &157226652
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5633241959722741416}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4.859493, y: 1, z: 4.2392826}
-  m_Center: {x: -0.90261585, y: 1.5566437e-15, z: 0.09233592}
+  DieEffect: {fileID: 6496979761244078437, guid: f5bf5dd1b0a9b6647a7debf9e8056834,
+    type: 3}
 --- !u!1001 &4399074147411834785
 PrefabInstance:
   m_ObjectHideFlags: 0
