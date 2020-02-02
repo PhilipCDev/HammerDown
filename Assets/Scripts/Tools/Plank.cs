@@ -12,17 +12,17 @@ namespace HammerDown.Tools
         [SerializeField]
         private int nails = 0;
         private List<Nail> allNails;
-        private List<Vector2> allNailPos;
+        private List<Vector3> allNailPos;
         private RectanglePos _rectanglePos;
         private Collider _collider;
 
         protected override void SetUp()
         {
             allNails = new List<Nail>();
-            allNailPos = new List<Vector2>();
+            allNailPos = new List<Vector3>();
             _collider = gameObject.GetComponent<Collider>();
-            _rectanglePos.leftBottom = new Vector2(_collider.bounds.min.x, _collider.bounds.min.y);
-            _rectanglePos.rightTop = new Vector2(_collider.bounds.max.x, _collider.bounds.max.y);
+            _rectanglePos.leftBottomFront = _collider.bounds.min;
+            _rectanglePos.rightTopBack = _collider.bounds.max;
             Game.instance.board.boardStatus.AddPlank(this);
         }
 

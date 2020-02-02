@@ -7,6 +7,8 @@ namespace HammerDown.Map
 {
     public class Board : MonoBehaviour
     {
+        private float friendlyness = 2;
+
         //Hannah: Move to Game
         public BoardStatus boardStatus;
         
@@ -27,10 +29,44 @@ namespace HammerDown.Map
         }
 
         //Call Whenever a nail is nailed completly in. Returns true only if the Plank is fully fixed. Needs position of the board and position of all full nailed in and not broken nails.
-        public bool IsPlankFixed(RectanglePos position, List<Vector2> nailPositions)
+        // Hannah: Yes, use for call BoardStatus.AddFixedPlanks
+        public bool IsPlankFixed(RectanglePos position, List<Vector3> nailPositions)
         {
-            // Hannah: Yes, use for call BoardStatus.AddFixedPlanks
-            return false;
+            float refDistance = Vector3.SqrMagnitude(position.leftBottomFront - position.rightTopBack);
+
+            Dictionary<int, float> distanceMap = new Dictionary<int, float>();
+            for(int i=0; i< nailPositions.Count; i++)
+            {
+                for (int j = 0; j < nailPositions.Count; j++)
+                {
+                    if (i < j)
+                    {
+                        if (!distanceMap.ContainsKey(i << 8 + j))
+                        {
+                            distanceMap.Add(i << 8 + j, Vector3.SqrMagnitude(nailPositions[i] - nailPositions[j]));
+                        }
+                    }
+                    else
+                    {
+                        if (j < i)
+                        {
+                            if (!distanceMap.ContainsKey(j << 8 + i))
+                            {
+                                distanceMap.Add(j << 8 + i, Vector3.SqrMagnitude(nailPositions[i] - nailPositions[j]));
+                            }
+                        }
+                    }
+                }
+            }
+
+            float sumDistance = 0;
+            foreach(int key in distanceMap.Keys)
+            {
+                sumDistance += distanceMap[key];
+            }
+            sumDistance *= friendlyness;
+
+            return sumDistance > refDistance;
         }
 
         //used for evaluating points, you do not need this
@@ -42,13 +78,13 @@ namespace HammerDown.Map
     }
 
     public struct RectanglePos{
-        public Vector2 leftBottom;
-        public Vector2 rightTop;
+        public Vector2 leftBottomFront;
+        public Vector2 rightTopBack;
 
-        public RectanglePos(Vector2 _leftBottom, Vector2 _rightTop)
+        public RectanglePos(Vector3 _leftBottomFront, Vector3 _rightTopBack)
         {
-            leftBottom = _leftBottom;
-            rightTop = _rightTop;
+            leftBottomFront = _leftBottomFront;
+            rightTopBack = _rightTopBack;
         }
     }
 }
