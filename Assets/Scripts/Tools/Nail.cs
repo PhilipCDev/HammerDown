@@ -34,7 +34,7 @@ namespace HammerDown.Tools
         {
             _nailState = NailStates.Loose;
             Debug.Log(Game.instance.board);
-            Game.instance.board.boardStatus.AddNail(this);
+            Game.instance.boardStatus.AddNail(this);
             
         }
 
@@ -78,7 +78,7 @@ namespace HammerDown.Tools
                 {
                     Debug.Log("Nail needs to be on board");
                     _nailState = NailStates.Destroyed;
-                    Game.instance.board.boardStatus.RemoveNail(this);
+                    Game.instance.boardStatus.RemoveNail(this);
                     return;
                 }
                 
@@ -106,7 +106,7 @@ namespace HammerDown.Tools
                     _nailState = NailStates.Fixed;
                     //Push Nail in Wall
                     gameObject.transform.localPosition += nailStep;
-                    Game.instance.board.boardStatus.RemoveNail(this);
+                    Game.instance.boardStatus.RemoveNail(this);
                 }
                 else
                 {
@@ -118,7 +118,7 @@ namespace HammerDown.Tools
             if (_nailState == NailStates.Destroyed)
             {
                 Debug.Log("Can't hit a destroyed nail");
-                Game.instance.board.boardStatus.RemoveNail(this);
+                Game.instance.boardStatus.RemoveNail(this);
             }
 
             if (_nailState == NailStates.Fixed)
