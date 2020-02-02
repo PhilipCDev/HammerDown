@@ -20,7 +20,7 @@ namespace HammerDown.GameTools {
         {
             if(time != 0)
             {
-                time = Mathf.Clamp(time - Time.realtimeSinceStartup, 0, int.MaxValue);
+                time = Mathf.Clamp(time - Time.deltaTime, 0, int.MaxValue);
                 if(time == 0)
                 {
                     Game.instance.GameOver();
