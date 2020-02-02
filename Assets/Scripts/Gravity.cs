@@ -7,14 +7,14 @@ using HammerDown.Player;
 namespace HammerDown.GameObjects
 {
     [RequireComponent(typeof(Rigidbody))]
-    [RequireComponent(typeof(Animation))]
     public class Gravity : MonoBehaviour
     {
         public float TimeUntilWarning = 4f;
         public float TimeFromWarningToDrop = 2f;
         public bool changeKinematicState;
-        private bool _enabled = true;
+        public Animation WarningAnimation;
         private bool cannotFall;
+        private bool _enabled = true;
 
         [SerializeField]
         public bool Enabled
@@ -45,14 +45,12 @@ namespace HammerDown.GameObjects
         private Coroutine warningTimer;
         private Coroutine dropTimer;
         private Rigidbody rigidBody;
-        private Animation warningAnimation;
 
 
         // Start is called before the first frame update
         void Start()
         {
             rigidBody = GetComponent<Rigidbody>();
-            warningAnimation = GetComponent<Animation>();
             //OnTouchExit(null);
         }
 
@@ -116,7 +114,12 @@ namespace HammerDown.GameObjects
 
         private void Shake()
         {
-            warningAnimation.Play();
+            if (WarningAnimation == null)
+            {
+                Debug.LogError("Animation missing");
+                return;
+            }
+            WarningAnimation.Play();
         }
 
         private void Warning()

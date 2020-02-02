@@ -525,6 +525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   board: {fileID: 1770941406}
+  status: {fileID: 1770941407}
 --- !u!4 &718451542
 Transform:
   m_ObjectHideFlags: 0
@@ -1451,7 +1452,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96c45a143b3a58842873ed99ac9336f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boardStatus: {fileID: 1770941407}
   holes: []
 --- !u!114 &1770941407
 MonoBehaviour:

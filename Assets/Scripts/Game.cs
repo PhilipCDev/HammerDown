@@ -13,10 +13,16 @@ namespace HammerDown
         public Hammer hammer { private set; get; }
         public Hand hand { private set; get; }
         public Board board { private set; get; }
+        public BoardStatus boardStatus { private set; get; }
+
         public int score;
 
         public delegate void GameEvent();
-        public GameEvent GameStart { private set; get; }
+        public GameEvent GameStart = () => { };
+        public GameEvent GameOver = () => { };
+        public GameEvent GetPoints = () => { };
+        public GameEvent Pause = () => { };
+        public GameEvent Continue = () => { };
 
         public void RegisterHammer(Hammer hammer)
         {
@@ -34,10 +40,11 @@ namespace HammerDown
             this.hand = hand;
         }
 
-        public void RegisterNewBoard(Board newBoard)
+        public void RegisterNewBoard(Board newBoard, BoardStatus newStatus)
         {
             //Old Board remove
             board = newBoard;
+            boardStatus = newStatus;
         }
     }
 }
