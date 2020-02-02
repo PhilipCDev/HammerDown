@@ -28,6 +28,11 @@ namespace HammerDown.Player
 
         bool downMoving;
         bool upMoving;
+
+        float pushAwayTime;
+        bool pushAway;
+        Vector3 pushDir;
+
         public Rigidbody rigid { private set; get; }
 
         private void Start()
@@ -40,12 +45,38 @@ namespace HammerDown.Player
         {
             if (!confinedToWall)
                 SnapToObject();
+            PushAwayUpdate();
+
             CheckForForwardObject();
             Move();
         }
 
+        void PushAwayUpdate()
+        {
+            if (pushAway)
+            {
+                if (!CheckInBounds(Vector3.zero) || Time.time - pushAwayTime > 0.4f)
+                {
+                    rigid.velocity = Vector3.zero;
+                    rigid.MovePosition(rigid.position - pushDir * 0.1f);
+                    pushAway = false;
+                }      
+            }
+        }
+
+        public void PushAway(Vector3 dir, float strength)
+        {
+            pushAway = true;
+            rigid.AddForce(dir * strength);
+            pushAwayTime = Time.time;
+            pushDir = dir;
+        }
+
         void Move()
         {
+            if (pushAway)
+                return;
+
             if (moveAxis.magnitude < 0.1f)
             {
                 moveRamp = 0;

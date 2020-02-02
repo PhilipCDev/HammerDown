@@ -14,5 +14,10 @@ namespace HammerDown
         {
             Game.instance.RegisterNewBoard(board, status);
         }
+
+        private void Start()
+        {
+            Game.instance.GameStart.Invoke();
+        }
     }
 }
