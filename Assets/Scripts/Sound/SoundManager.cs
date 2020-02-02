@@ -28,6 +28,7 @@ namespace HammerDown.Sound
         {
             current = this;
             cameraEar.clip = menuMusic;
+            cameraEar.Play();
             
         }
 
@@ -80,6 +81,7 @@ namespace HammerDown.Sound
         {
             yield return new WaitForSeconds(cameraEar.clip.length);
             cameraEar.clip = musicIngame;
+            cameraEar.Play();
         }
     }
 
