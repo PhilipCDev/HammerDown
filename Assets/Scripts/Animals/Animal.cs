@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using HammerDown.Interfaces;
 using HammerDown.Map.Components;
+using HammerDown.Player;
 using UnityEngine;
 using static System.Random;
 using Random = UnityEngine.Random;
 
 namespace HammerDown.Animals
 {
-    public abstract class Animal : MonoBehaviour
+    public abstract class Animal : MonoBehaviour, IHitable
     {
         public enum Targets
         {
@@ -61,6 +63,11 @@ namespace HammerDown.Animals
         {
             if(!active) return;
             GoToTarget();
+        }
+
+        public virtual void OnHit(Hammer hand)
+        {
+            throw new NotImplementedException();
         }
     }
 }
