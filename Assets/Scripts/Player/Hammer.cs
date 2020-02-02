@@ -10,6 +10,7 @@ namespace HammerDown.Player
     public class Hammer : MonoBehaviour
     {
         Movement movement;
+        Animator animator;
 
         Coroutine hammerUpCoroutine;
 
@@ -21,7 +22,8 @@ namespace HammerDown.Player
 
         private void Start()
         {
-            movement = GetComponent<Movement>();       
+            movement = GetComponent<Movement>();
+            animator = GetComponentInChildren<Animator>();
         }
 
         public void Trigger(InputAction.CallbackContext context)
@@ -47,12 +49,14 @@ namespace HammerDown.Player
             movement.MoveDown();
             if (hammerUpCoroutine != null) StopCoroutine(MoveHammerUp());
             hammerUpCoroutine = StartCoroutine(MoveHammerUp());
+            animator.Play("Down");
         }
 
         IEnumerator MoveHammerUp(float delay = 0.4f)
         {
             yield return new WaitForSeconds(delay);
             movement.MoveUp();
+            animator.Play("Up");
         }
     }
 }
