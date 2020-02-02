@@ -20,7 +20,7 @@ namespace HammerDown.Map
         //Bool function. Give a point and returns if it is on a board. Check for Nail (Nail can only be nailed in if OnBoard is true)
         public bool IsOnBoard(Transform obj)
         {
-            RaycastHit[] hits = Physics.RaycastAll(obj.transform.position - obj.transform.forward * 0.5f, obj.transform.transform.forward, 1, 1 << 12 | 1 << 14);
+            RaycastHit[] hits = Physics.RaycastAll(obj.transform.position + obj.transform.up * 0.5f, - obj.transform.transform.up, 1, 1 << 12 | 1 << 14);
             if (hits.Length > 0 && !hits.Any(h => h.collider.gameObject.layer == 14))
             {
                 return true;
