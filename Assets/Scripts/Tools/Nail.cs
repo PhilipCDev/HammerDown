@@ -74,7 +74,7 @@ namespace HammerDown.Tools
         {
             if (_nailState == NailStates.Holding && _stateHolding)
             {
-                if (!Game.instance.board.IsOnBoard(new Vector2(transform.position.x, transform.position.y )))
+                if (!Game.instance.board.IsOnBoard(transform))
                 {
                     Debug.Log("Nail needs to be on board");
                     _nailState = NailStates.Destroyed;
