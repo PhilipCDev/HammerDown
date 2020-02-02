@@ -10,6 +10,7 @@ namespace HammerDown.Map
     {
         private HashSet<Plank> UnusedPlanks = new HashSet<Plank>(); //Planks that can potential be moved. Potential moved != !Fixed. Fixed only if 3-4 Nails completly in. Potential move as long no nail in
         private HashSet<Nail> UnusedNails = new HashSet<Nail>(); //Nails that can potential be moved. That means you can still move them or hit them by a hammer
+        private HashSet<Plank> LoosePlanks = new HashSet<Plank>(); //Planks that can not move but are also not fixed
         private HashSet<Plank> FixedPlanks = new HashSet<Plank>(); //Planks that are fixed. Board.IsPlankFixed return true for nails that are in the plank
 
         private bool isChecking = false;
@@ -19,14 +20,14 @@ namespace HammerDown.Map
         {
             if(UnusedNails.Count == 0 && UnusedPlanks.Count == 0)
             {
-                //TODO: END
+                //TODO: CALL END
                 ResetStatus();
             }
             else
             {
-                if (false)//TODO: Check if all holes are covered
+                if (Game.instance.board.CalcHoleCoverage() >= 1f)
                 {
-                    //TODO: END
+                    //TODO: CALL END
                     ResetStatus();
                 }
             }
@@ -36,6 +37,7 @@ namespace HammerDown.Map
             UnusedPlanks = new HashSet<Plank>();
             UnusedNails = new HashSet<Nail>();
             FixedPlanks = new HashSet<Plank>();
+            LoosePlanks = new HashSet<Plank>();
             isChecking = false;
         }
         #endregion
@@ -66,6 +68,7 @@ namespace HammerDown.Map
             if (UnusedPlanks.Contains(plank))
             {
                 UnusedPlanks.Remove(plank);
+                LoosePlanks.Add(plank);
                 if (isChecking)
                 {
                     CheckStatus();
@@ -92,6 +95,7 @@ namespace HammerDown.Map
         {
             //Hannah:  Nail nail changed type from nail to plank? Correct
             FixedPlanks.Add(plank);
+            LoosePlanks.Remove(plank);
             CheckStatus();
         }
         #endregion
