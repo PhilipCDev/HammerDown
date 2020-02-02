@@ -44,7 +44,8 @@ namespace HammerDown.Player
 
         public void Feared(Animal fearer)
         {
-
+            Debug.Log("Feared");
+            // TODO Philip, add this here
         }
 
         private void OnTriggerEnter(Collider other)
