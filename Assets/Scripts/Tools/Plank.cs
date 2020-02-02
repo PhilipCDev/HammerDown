@@ -23,7 +23,6 @@ namespace HammerDown.Tools
             _collider = gameObject.GetComponent<Collider>();
             _rectanglePos.leftBottomFront = _collider.bounds.min;
             _rectanglePos.rightTopBack = _collider.bounds.max;
-            Game.instance.boardStatus.AddPlank(this);
         }
 
         public override void OnGrab(Hand hand)

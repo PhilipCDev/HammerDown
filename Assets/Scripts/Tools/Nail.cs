@@ -33,9 +33,7 @@ namespace HammerDown.Tools
         protected override void SetUp()
         {
             _nailState = NailStates.Loose;
-            Debug.Log(Game.instance.board);
-            Game.instance.boardStatus.AddNail(this);
-            
+            Debug.Log(Game.instance.board);            
         }
 
 
