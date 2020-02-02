@@ -24,17 +24,7 @@ namespace HammerDown.Tools
             _rectanglePos.leftBottomFront = _collider.bounds.min;
             _rectanglePos.rightTopBack = _collider.bounds.max;
         }
-
-        public override void OnTouchEnter(Hand hand)
-        {
-            _gravity.Stabilized();
-        }
-
-        public override void OnTouchExit(Hand hand)
-        {
-            _gravity.DeStabilized();
-        }
-
+        
         public override void OnGrab(Hand hand)
         {
             if (allNails.Count > 0)
@@ -51,9 +41,9 @@ namespace HammerDown.Tools
 
         public override void OnRelease(Hand hand)
         {
-            if (nails >= 2)
+            if (nails >= 1)
             {
-                _gravity.CanNoLongerFall();
+                _gravity.Enabled = false;
                 Debug.Log("Deactivated Gravity of " + gameObject.name + ", because plank has more than 2 nails");
             }
             gameObject.transform.parent = null;
@@ -65,11 +55,11 @@ namespace HammerDown.Tools
             {
                 Game.instance.boardStatus.RemovePlank(this);
                 Debug.Log("Added nail to plank");
+                _gravity.Enabled = false;
                 allNails.Add(nail);
                 allNailPos.Add(new Vector2(nail.transform.position.x, nail.transform.position.y));
                 if (Game.instance.board.IsPlankFixed(_rectanglePos, allNailPos))
                 {
-
                     Game.instance.boardStatus.AddFixedPlanks(this);
                 }
                 nails++;
