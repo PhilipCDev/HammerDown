@@ -8,10 +8,11 @@ namespace HammerDown
     public class TestLevelLoader : MonoBehaviour
     {
         public Board board;
+        public BoardStatus status;
 
         private void Awake()
         {
-            Game.instance.RegisterNewBoard(board);
+            Game.instance.RegisterNewBoard(board, status);
         }
     }
 }
